@@ -418,17 +418,17 @@ function initStep1CarePackage() {
       }
 
       if (item.id === 'careTea') {
-        mascotAvatar.innerText = '☕🥰';
+        mascotAvatar.innerText = '🥰';
       } else if (item.id === 'careHug') {
-        mascotAvatar.innerText = '🤗💖';
+        mascotAvatar.innerText = '🤗';
       } else if (item.id === 'carePill') {
-        mascotAvatar.innerText = '🤩✨';
+        mascotAvatar.innerText = '✨';
         const pool = TRANSLATIONS[currentLang].compliments;
         const randomCompliment = pool[Math.floor(Math.random() * pool.length)];
         complimentText.innerText = randomCompliment;
         complimentToast.style.display = 'flex';
       } else if (item.id === 'carePat') {
-        mascotAvatar.innerText = '😴🌸';
+        mascotAvatar.innerText = '🌸';
       }
 
       if (energy === 100) {
@@ -558,6 +558,9 @@ function initStep3Celebration() {
 
     const dodgeMsg = document.getElementById('dodgeMsg');
     if (dodgeMsg) dodgeMsg.innerText = '';
+
+    const mascotAvatar = document.getElementById('mascotAvatar');
+    if (mascotAvatar) mascotAvatar.innerText = '🥺';
 
     // Hide secret layer if opened
     const secretLayer = document.getElementById('secretLayer');

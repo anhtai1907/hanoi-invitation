@@ -63,7 +63,7 @@ const TRANSLATIONS = {
     secretBtnText: "Mở khóa điều bí mật: \"WE EAT US\" 🌙🔓",
     secretBtnClose: "Đóng điều bí mật 🌙✖",
     secretHeadline: "WE EAT US 🌙✨",
-    secretSub: "Không gian riêng của hai đứa: Netflix, vài lon bia mát lạnh, đồ ăn ngon và chúng mình.",
+    secretSub: "Những khoảnh khắc ấm áp và riêng tư chỉ thuộc về hai đứa mình...",
     secretStepHint: "👇 Chạm mở khóa từng bước dưới đây nha bé iu:",
     beer1Title: "Khui lon bia mát & ăn vặt",
     beer1Desc: "Nhâm nhi chút bia, ăn snack và tâm sự thâu đêm cùng nhau.",
@@ -153,7 +153,7 @@ const TRANSLATIONS = {
     secretBtnText: "Unlock Secret: \"WE EAT US\" 🌙🔓",
     secretBtnClose: "Close Secret 🌙✖",
     secretHeadline: "WE EAT US 🌙✨",
-    secretSub: "Our private space: Netflix, cold beers, good food and just us.",
+    secretSub: "Cozy, private moments made just for the two of us...",
     secretStepHint: "👇 Tap to unlock each step of our night in order:",
     beer1Title: "1. Cold beers & snacks",
     beer1Desc: "Sipping cold beers, snacking and talking all night.",
@@ -579,7 +579,7 @@ function initStep3Celebration() {
 
   replayBtn.addEventListener('click', () => {
     sounds.playPop();
-    energy = 0;
+    energy = 25;
     dodgeCount = 0;
     updateEnergyBar();
 
@@ -665,6 +665,7 @@ function renderSecretLayer() {
     if (icon1) icon1.innerText = '🍺';
     if (title1) title1.innerText = TRANSLATIONS[currentLang].beer1Title;
     if (desc1) desc1.innerText = TRANSLATIONS[currentLang].beer1Desc;
+    step1.setAttribute('aria-label', `${TRANSLATIONS[currentLang].beer1Title}: ${TRANSLATIONS[currentLang].beer1Desc}`);
   }
 
   // Step 2
@@ -681,11 +682,13 @@ function renderSecretLayer() {
       if (icon2) icon2.innerText = '🎬';
       if (title2) title2.innerText = TRANSLATIONS[currentLang].beer2Title;
       if (desc2) desc2.innerText = TRANSLATIONS[currentLang].beer2Desc;
+      step2.setAttribute('aria-label', `${TRANSLATIONS[currentLang].beer2Title}: ${TRANSLATIONS[currentLang].beer2Desc}`);
     } else {
       step2.className = 'beer-card locked-step';
       if (icon2) icon2.innerText = '🔒';
       if (title2) title2.innerText = TRANSLATIONS[currentLang].beer2LockedTitle;
       if (desc2) desc2.innerText = TRANSLATIONS[currentLang].beer2LockedDesc;
+      step2.setAttribute('aria-label', `${TRANSLATIONS[currentLang].beer2LockedTitle}: ${TRANSLATIONS[currentLang].beer2LockedDesc}`);
     }
   }
 
@@ -703,11 +706,13 @@ function renderSecretLayer() {
       if (icon3) icon3.innerText = '🕯️';
       if (title3) title3.innerText = TRANSLATIONS[currentLang].beer3Title;
       if (desc3) desc3.innerText = TRANSLATIONS[currentLang].beer3Desc;
+      step3.setAttribute('aria-label', `${TRANSLATIONS[currentLang].beer3Title}: ${TRANSLATIONS[currentLang].beer3Desc}`);
     } else {
       step3.className = 'beer-card locked-step';
       if (icon3) icon3.innerText = '🔒';
       if (title3) title3.innerText = TRANSLATIONS[currentLang].beer3LockedTitle;
       if (desc3) desc3.innerText = TRANSLATIONS[currentLang].beer3LockedDesc;
+      step3.setAttribute('aria-label', `${TRANSLATIONS[currentLang].beer3LockedTitle}: ${TRANSLATIONS[currentLang].beer3LockedDesc}`);
     }
   }
 
@@ -756,7 +761,10 @@ function initSecretLayer() {
     secretState.unlockedStep = Math.max(secretState.unlockedStep, 2);
     renderSecretLayer();
 
-    if (step2) step2.classList.add('revealing');
+    if (step2) {
+      step2.classList.add('revealing');
+      setTimeout(() => step2.classList.remove('revealing'), 600);
+    }
     sounds.playCheers();
 
     if (cheersMessage && cheersToast) {
@@ -782,7 +790,10 @@ function initSecretLayer() {
     secretState.unlockedStep = Math.max(secretState.unlockedStep, 3);
     renderSecretLayer();
 
-    if (step3) step3.classList.add('revealing');
+    if (step3) {
+      step3.classList.add('revealing');
+      setTimeout(() => step3.classList.remove('revealing'), 600);
+    }
     sounds.playChime();
 
     if (cheersMessage && cheersToast) {

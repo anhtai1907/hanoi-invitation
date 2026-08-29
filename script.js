@@ -256,8 +256,16 @@ class SoundSynth {
         return false;
       }
     }
-    if (this.ctx.state === 'suspended') this.ctx.resume();
+    if (this.ctx.state === 'suspended') this.ctx.resume().catch(() => {});
     return true;
+  }
+
+  unlock() {
+    if (!this.init()) return;
+    const source = this.ctx.createBufferSource();
+    source.buffer = this.ctx.createBuffer(1, 1, 22050);
+    source.connect(this.ctx.destination);
+    source.start(0);
   }
 
   playPop() {
@@ -385,7 +393,9 @@ const sounds = new SoundSynth();
 // DOM INITIALIZATION
 // ==========================================================================
 document.addEventListener('DOMContentLoaded', () => {
-  document.addEventListener('pointerdown', () => sounds.init(), { once: true });
+  const unlockAudio = () => sounds.unlock();
+  document.addEventListener('touchstart', unlockAudio, { once: true, passive: true });
+  document.addEventListener('pointerdown', unlockAudio, { once: true, passive: true });
   initFloatingBackground();
   initLanguageToggle();
   initSoundToggle();

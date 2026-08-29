@@ -252,7 +252,7 @@
           <div class="bucket-list">
             <div class="bucket-title" data-i18n="bucketTitle">📋 Danh sách việc nhất định phải làm cùng nhau:</div>
             <ul class="checklist">
-              <li><input type="checkbox" checked disabled /> <span data-i18n="check1">Uống cà phê trứng ngắm phố cổ ☕</span></li>
+          <li><input type="checkbox" checked disabled /> <span data-i18n="check1">Uống cà phê trứng ngắm phố cổ ☕</span></li>
               <li><input type="checkbox" checked disabled /> <span data-i18n="check2">Cùng nhau đi bộ dạo quanh Hồ Tây đón gió mát 🌇</span></li>
               <li><input type="checkbox" checked disabled /> <span data-i18n="check3">Ăn phở đêm xì xụp ấm bụng 🥢</span></li>
               <li><input type="checkbox" checked disabled /> <span data-i18n="check4">Ăn kem Tràng Tiền dạo phố đi bộ Hồ Gươm 🍦</span></li>
@@ -278,7 +278,7 @@
         </button>
       </div>
 
-      <!-- Hidden Secret Section (Simple, Warm & Cozy) -->
+      <!-- Hidden Secret Section (Simple, Warm & Cozy 3-Step Ritual) -->
       <div class="secret-layer-card" id="secretLayer">
         <div class="secret-header">
           <div class="secret-neon-tag">SPECIAL IN-ROOM DATE • CHILL & US 🕯️</div>
@@ -286,33 +286,39 @@
           <p class="secret-sub" data-i18n="secretSub">
             Không gian riêng của hai đứa: Netflix, vài lon bia mát lạnh, đồ ăn ngon và chúng mình.
           </p>
+          <div class="secret-step-hint" id="secretStepHint" data-i18n="secretStepHint">
+            <span class="hint-icon">👇</span> Chạm lần lượt 3 bước dưới đây nha bé iu:
+          </div>
         </div>
 
-        <!-- Cozy In-Room Vibe Options -->
+        <!-- Cozy In-Room 3-Step Sequence -->
         <div class="beer-section">
-          <div class="beer-grid">
-            <!-- Option 1: Netflix & Chill -->
-            <div class="beer-card" data-beer="netflix" role="button" tabindex="0">
-              <div class="beer-icon">🎬</div>
-              <div class="beer-info">
-                <h5 data-i18n="beer1Title">Netflix & Cozy Bed</h5>
-                <p data-i18n="beer1Desc">Bật bộ phim yêu thích, cuộn tròn trong chăn ấm cùng nhau.</p>
-              </div>
-              <div class="beer-check">✓</div>
-            </div>
-
-            <!-- Option 2: Cold Beer & Talks -->
-            <div class="beer-card" data-beer="beer" role="button" tabindex="0">
+          <div class="beer-grid" id="secretStepsGrid">
+            <!-- Step 1: Cold Beer & Talks (First) -->
+            <div class="beer-card active-step" data-step="1" data-beer="beer" role="button" tabindex="0">
+              <span class="step-num">1</span>
               <div class="beer-icon">🍺</div>
               <div class="beer-info">
-                <h5 data-i18n="beer2Title">Vài lon bia mát lạnh</h5>
-                <p data-i18n="beer2Desc">Nhâm nhi lon bia, ăn snack và tâm sự thâu đêm.</p>
+                <h5 data-i18n="beer1Title">Khui lon bia mát & ăn vặt</h5>
+                <p data-i18n="beer1Desc">Nhâm nhi chút bia, ăn snack và tâm sự thâu đêm cùng nhau.</p>
               </div>
               <div class="beer-check">✓</div>
             </div>
 
-            <!-- Option 3: ...and then "We eat us" -->
-            <div class="beer-card" data-beer="we_eat_us" role="button" tabindex="0">
+            <!-- Step 2: Netflix & Cozy Bed (Next) -->
+            <div class="beer-card" data-step="2" data-beer="netflix" role="button" tabindex="0">
+              <span class="step-num">2</span>
+              <div class="beer-icon">🎬</div>
+              <div class="beer-info">
+                <h5 data-i18n="beer2Title">Bật Netflix & lên giường đắp chăn ấm</h5>
+                <p data-i18n="beer2Desc">Chọn bộ phim yêu thích, cuộn tròn trong chăn xem cùng nhau.</p>
+              </div>
+              <div class="beer-check">✓</div>
+            </div>
+
+            <!-- Step 3: ...and then "We eat us" (Finale) -->
+            <div class="beer-card" data-step="3" data-beer="we_eat_us" role="button" tabindex="0">
+              <span class="step-num">3</span>
               <div class="beer-icon">🕯️</div>
               <div class="beer-info">
                 <h5 data-i18n="beer3Title">...và rồi "We eat us"</h5>
@@ -322,10 +328,18 @@
             </div>
           </div>
 
-          <!-- Toast Message on Vibe Choice -->
+          <!-- Toast Message on Step Choice -->
           <div class="cheers-toast" id="cheersToast">
             <span class="clink-anim">✨</span>
-            <span id="cheersMessage">Chỉ cần ở cạnh em trong phòng là đủ bình yên và tuyệt nhất rồi bé iu 💕</span>
+            <span id="cheersMessage">Chỉ cần ở cạnh em trong phòng là đủ bình yên và vui nhất rồi bé iu 💕</span>
+          </div>
+
+          <!-- Final All-3-Steps Unlocked Celebration Card -->
+          <div class="secret-complete-card" id="secretCompleteCard">
+            <div class="complete-icon">💖✨🎉</div>
+            <div class="complete-text" data-i18n="secretCompleteText">
+              Trọn vẹn một buổi tối tuyệt vời chỉ có hai đứa mình... Thương em 💕
+            </div>
           </div>
         </div>
       </div>
@@ -341,7 +355,7 @@
       </div>
 
       <p class="love-footer" data-i18n="loveFooter">
-        Mọi chuyện không vui hay mệt mỏi hôm nay cứ để gió cuốn đi hết nha. Có anh ở đây rồi, lúc nào cũng thương và bên cạnh em! 💕
+        Thương em 💕
       </p>
     </section>
 

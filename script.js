@@ -59,15 +59,17 @@ const TRANSLATIONS = {
     secretBtnText: "Mở khóa điều bí mật: \"WE EAT US\" 🌙🔓",
     secretHeadline: "WE EAT US 🌙✨",
     secretSub: "Không gian riêng của hai đứa: Netflix, vài lon bia mát lạnh, đồ ăn ngon và chúng mình.",
-    beer1Title: "Netflix & Cozy Bed",
-    beer1Desc: "Bật bộ phim yêu thích, cuộn tròn trong chăn ấm cùng nhau.",
-    beer2Title: "Vài lon bia mát lạnh",
-    beer2Desc: "Nhâm nhi lon bia, ăn snack và tâm sự thâu đêm.",
+    secretStepHint: "👇 Chạm lần lượt 3 bước dưới đây nha bé iu:",
+    beer1Title: "Khui lon bia mát & ăn vặt",
+    beer1Desc: "Nhâm nhi chút bia, ăn snack và tâm sự thâu đêm cùng nhau.",
+    beer2Title: "Bật Netflix & lên giường đắp chăn ấm",
+    beer2Desc: "Chọn bộ phim yêu thích, cuộn tròn trong chăn xem cùng nhau.",
     beer3Title: "...và rồi \"We eat us\"",
     beer3Desc: "Không gian riêng tư, ngọt ngào chỉ thuộc về hai đứa mình.",
+    secretCompleteText: "Trọn vẹn một buổi tối tuyệt vời của hai đứa mình... Thương em 💕",
     replayBtn: "Chơi lại từ đầu 🔄",
     confettiBtn: "Thêm pháo hoa & tim 🎊💖",
-    loveFooter: "Hôm nay vất vả rồi, nghỉ ngơi cho thoải mái nha em iu. Lúc nào anh cũng ở đây với em nè ✨",
+    loveFooter: "Thương em 💕",
     dodgeMessages: [
       "Hông bấm được đâu nè 😜",
       "Nút này bị hỏng rùi hehe 🛠️",
@@ -86,9 +88,9 @@ const TRANSLATIONS = {
       "🌟 Lúc nào anh cũng ở đây ủng hộ và đồng hành cùng em nè"
     ],
     beerToasts: {
-      netflix: "Cuộn tròn xem phim cùng em là bình yên nhất nè 🎬🍿",
-      beer: "Cụng lon bia mát lạnh nè 🍺 Nhâm nhi và nói chuyện thâu đêm cùng em nha",
-      we_eat_us: "Và rồi... chỉ có hai đứa mình ngọt ngào bên nhau thôi bé iu 🕯️✨"
+      beer: "Bước 1: Cụng lon bia mát lạnh nè 🍺 Nhâm nhi và nói chuyện thâu đêm nha",
+      netflix: "Bước 2: Bật phim hay và cuộn tròn trong chăn ấm cùng em 🎬🍿",
+      we_eat_us: "Bước 3: Và rồi... chỉ có hai đứa mình ngọt ngào bên nhau 🕯️✨"
     }
   },
   en: {
@@ -137,15 +139,17 @@ const TRANSLATIONS = {
     secretBtnText: "Unlock Secret: \"WE EAT US\" 🌙🔓",
     secretHeadline: "WE EAT US 🌙✨",
     secretSub: "Our private space: Netflix, cold beers, good food and just us.",
-    beer1Title: "Netflix & Cozy Bed",
-    beer1Desc: "Favorite movie, cuddling under warm blankets together.",
-    beer2Title: "Cold beers & talks",
-    beer2Desc: "Sipping cold beers, snacking and talking all night.",
-    beer3Title: "...and then \"We eat us\"",
+    secretStepHint: "👇 Tap all 3 steps in order to complete our night:",
+    beer1Title: "1. Cold beers & snacks",
+    beer1Desc: "Sipping cold beers, snacking and talking all night.",
+    beer2Title: "2. Netflix & cozy blankets",
+    beer2Desc: "Favorite movie, cuddling in bed under warm blankets.",
+    beer3Title: "3. ...and then \"We eat us\"",
     beer3Desc: "Intimate, sweet private space belonging just to us.",
+    secretCompleteText: "A perfect cozy night of our own... Always with you 💕",
     replayBtn: "Play again 🔄",
     confettiBtn: "More fireworks & hearts 🎊💖",
-    loveFooter: "You've worked hard today, rest up and relax. I'm always right here with you! ✨",
+    loveFooter: "Love you 💕",
     dodgeMessages: [
       "Too slow! Nice try 😜",
       "This button is broken hehe 🛠️",
@@ -562,9 +566,24 @@ function initStep3Celebration() {
     const mascotAvatar = document.getElementById('mascotAvatar');
     if (mascotAvatar) mascotAvatar.innerText = '🥺';
 
-    // Hide secret layer if opened
+    // Reset secret layer 3-step sequence
+    completedSecretSteps.clear();
     const secretLayer = document.getElementById('secretLayer');
     if (secretLayer) secretLayer.classList.remove('show');
+
+    const secretCompleteCard = document.getElementById('secretCompleteCard');
+    if (secretCompleteCard) secretCompleteCard.classList.remove('show');
+
+    const cheersToast = document.getElementById('cheersToast');
+    if (cheersToast) cheersToast.style.display = 'none';
+
+    const beerCards = document.querySelectorAll('.beer-card');
+    beerCards.forEach(c => {
+      c.classList.remove('completed', 'selected', 'active-step');
+      if (c.getAttribute('data-step') === '1') {
+        c.classList.add('active-step');
+      }
+    });
 
     switchStep('step3', 'step1');
   });
@@ -575,13 +594,16 @@ function initStep3Celebration() {
   });
 }
 
-// 7. SECRET LAYER: "WE EAT US" & BEER SELECTION
+// 7. SECRET LAYER: "WE EAT US" 3-STEP SEQUENTIAL RITUAL
+let completedSecretSteps = new Set();
+
 function initSecretLayer() {
   const unlockBtn = document.getElementById('secretUnlockBtn');
   const secretLayer = document.getElementById('secretLayer');
   const beerCards = document.querySelectorAll('.beer-card');
   const cheersToast = document.getElementById('cheersToast');
   const cheersMessage = document.getElementById('cheersMessage');
+  const secretCompleteCard = document.getElementById('secretCompleteCard');
 
   unlockBtn.addEventListener('click', () => {
     sounds.playCheers();
@@ -595,18 +617,44 @@ function initSecretLayer() {
 
   beerCards.forEach(card => {
     card.addEventListener('click', () => {
-      sounds.playCheers();
-      
-      beerCards.forEach(c => c.classList.remove('selected'));
-      card.classList.add('selected');
-
+      const stepNum = parseInt(card.getAttribute('data-step') || '1', 10);
       const beerType = card.getAttribute('data-beer');
-      const toastText = TRANSLATIONS[currentLang].beerToasts[beerType] || "Chạm ly cái nè! 🍻";
+      
+      // Mark this card as completed
+      card.classList.add('completed');
+      card.classList.remove('active-step');
+      completedSecretSteps.add(stepNum);
 
+      // Play appropriate sound
+      if (stepNum === 1) {
+        sounds.playCheers();
+      } else {
+        sounds.playChime();
+      }
+
+      // Display Toast
+      const toastText = TRANSLATIONS[currentLang].beerToasts[beerType] || "Xong thêm một bước nè!";
       cheersMessage.innerText = toastText;
       cheersToast.style.display = 'flex';
 
+      // Activate next uncompleted step
+      const nextCard = document.querySelector(`.beer-card[data-step="${stepNum + 1}"]`);
+      if (nextCard && !completedSecretSteps.has(stepNum + 1)) {
+        nextCard.classList.add('active-step');
+      }
+
       triggerMiniConfetti();
+
+      // Check if all 3 steps completed!
+      if (completedSecretSteps.size >= 3) {
+        setTimeout(() => {
+          sounds.playFanfare();
+          triggerGoldConfetti();
+          if (secretCompleteCard) {
+            secretCompleteCard.classList.add('show');
+          }
+        }, 400);
+      }
     });
   });
 }

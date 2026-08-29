@@ -1079,25 +1079,43 @@ body {
   font-size: 0.88rem;
   color: #d2dae2;
   line-height: 1.45;
+  margin-bottom: 8px;
 }
 
-/* Beer Selection Grid */
-.beer-section {
-  margin-top: 16px;
-}
-
-.beer-heading {
-  font-size: 0.95rem;
+.secret-step-hint {
+  font-size: 0.84rem;
   font-weight: 800;
   color: #ffd32a;
-  margin-bottom: 12px;
+  background: rgba(255, 211, 42, 0.12);
+  border: 1px dashed rgba(255, 211, 42, 0.4);
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.hint-icon {
+  font-size: 1rem;
+  animation: bounceHint 1.4s infinite alternate ease-in-out;
+}
+
+@keyframes bounceHint {
+  0% { transform: translateY(-2px); }
+  100% { transform: translateY(3px); }
+}
+
+/* 3-Step Grid */
+.beer-section {
+  margin-top: 14px;
 }
 
 .beer-grid {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .beer-card {
@@ -1109,7 +1127,7 @@ body {
   align-items: center;
   gap: 12px;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: all 0.3s ease;
   user-select: none;
   position: relative;
 }
@@ -1120,10 +1138,47 @@ body {
   transform: translateX(4px);
 }
 
-.beer-card.selected {
-  background: rgba(255, 165, 2, 0.18);
-  border-color: #ffd32a;
-  box-shadow: 0 0 15px rgba(255, 165, 2, 0.25);
+.step-num {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(255, 211, 42, 0.2);
+  color: #ffd32a;
+  border: 1.5px solid #ffd32a;
+  font-size: 0.75rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.beer-card.active-step {
+  border-color: #ffa502;
+  box-shadow: 0 0 16px rgba(255, 165, 2, 0.35);
+  animation: stepCardPulse 1.8s infinite alternate;
+}
+
+@keyframes stepCardPulse {
+  0% {
+    box-shadow: 0 0 6px rgba(255, 165, 2, 0.2);
+    border-color: #ffa502;
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(255, 211, 42, 0.5);
+    border-color: #ffd32a;
+  }
+}
+
+.beer-card.completed {
+  background: rgba(46, 213, 115, 0.12);
+  border-color: #2ed573;
+}
+
+.beer-card.completed .step-num {
+  background: #2ed573;
+  color: #ffffff;
+  border-color: #2ed573;
 }
 
 .beer-icon {
@@ -1164,6 +1219,7 @@ body {
   transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+.beer-card.completed .beer-check,
 .beer-card.selected .beer-check {
   opacity: 1;
   transform: scale(1);
@@ -1180,27 +1236,45 @@ body {
   font-size: 0.85rem;
   font-weight: 700;
   color: #ffd32a;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   display: none;
   align-items: center;
   gap: 8px;
   animation: clinkBounce 0.5s ease;
 }
 
-@keyframes clinkBounce {
-  0% { transform: scale(0.9); opacity: 0; }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); opacity: 1; }
+/* Grand Finale Secret Complete Card */
+.secret-complete-card {
+  display: none;
+  background: linear-gradient(135deg, rgba(255, 71, 87, 0.2), rgba(255, 165, 2, 0.25));
+  border: 1.5px solid #ffd32a;
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  text-align: center;
+  margin-top: 10px;
+  box-shadow: 0 0 25px rgba(255, 211, 42, 0.35);
+  animation: completePopIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.clink-anim {
-  font-size: 1.2rem;
-  animation: clinkRotate 0.6s ease infinite alternate;
+.secret-complete-card.show {
+  display: block;
 }
 
-@keyframes clinkRotate {
-  0% { transform: rotate(-10deg); }
-  100% { transform: rotate(10deg); }
+@keyframes completePopIn {
+  0% { opacity: 0; transform: scale(0.9) translateY(10px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.complete-icon {
+  font-size: 1.8rem;
+  margin-bottom: 4px;
+}
+
+.complete-text {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.4;
 }
 
 /* Final actions */

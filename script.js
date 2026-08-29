@@ -60,19 +60,24 @@ const TRANSLATIONS = {
     check3: "Ăn phở đêm xì xụp ấm bụng 🥢",
     check4: "Ăn kem Tràng Tiền dạo phố đi bộ Hồ Gươm 🍦",
     check5: "Chụp 10,000 bức ảnh thật xinh cho em 📸",
-    secretBtnText: "Mở khóa điều bí mật: \"WE EAT US\" 🌙🔓",
-    secretBtnClose: "Đóng điều bí mật 🌙✖",
+    secretBtnText: "✨ Anh còn một điều nhỏ muốn bật mí... 🌙",
     secretHeadline: "WE EAT US 🌙✨",
-    secretSub: "Những khoảnh khắc ấm áp và riêng tư chỉ thuộc về hai đứa mình...",
+    secretSub: "Một góc nhỏ chỉ dành cho hai đứa mình...",
     secretStepHint: "👇 Chạm mở khóa từng bước dưới đây nha bé iu:",
+    beer1MysteryTitle: "Bước 1: Một buổi tối bắt đầu thế nào? 🤫",
+    beer1MysteryDesc: "Chạm để khám phá điều đầu tiên nha...",
     beer1Title: "Khui lon bia mát & ăn vặt",
     beer1Desc: "Nhâm nhi chút bia, ăn snack và tâm sự thâu đêm cùng nhau.",
+    beer2MysteryTitle: "Bước 2: Một điều bất ngờ đang đợi em 🤫",
+    beer2MysteryDesc: "Chạm để khám phá bước tiếp theo nha...",
     beer2LockedTitle: "Bước 2: Bí mật đang đợi em 🤫",
     beer2LockedDesc: "Hoàn thành Bước 1 để mở khóa điều tiếp theo nha...",
     beer2Title: "Bật Netflix & lên giường đắp chăn ấm",
     beer2Desc: "Chọn bộ phim yêu thích, cuộn tròn trong chăn xem cùng nhau.",
     beer3LockedTitle: "Bước 3: Điều ngọt ngào nhất 🌙",
     beer3LockedDesc: "Bí mật chỉ mở ra sau khi hoàn thành 2 bước trước nha...",
+    beer3MysteryTitle: "Bước 3: Điều ngọt ngào nhất đang đợi em 🌙",
+    beer3MysteryDesc: "Chạm để khám phá điều cuối cùng nha...",
     beer3Title: "...và rồi \"We eat us\"",
     beer3Desc: "Không gian riêng tư, ngọt ngào chỉ thuộc về hai đứa mình.",
     secretCompleteText: "Trọn vẹn một buổi tối tuyệt vời của hai đứa mình... Thương em 💕",
@@ -150,19 +155,24 @@ const TRANSLATIONS = {
     check3: "Late night hot Phở dates 🥢",
     check4: "Tràng Tiền Ice Cream walk by the lake 🍦",
     check5: "Take 10,000 aesthetic photos of you 📸",
-    secretBtnText: "Unlock Secret: \"WE EAT US\" 🌙🔓",
-    secretBtnClose: "Close Secret 🌙✖",
+    secretBtnText: "✨ There’s one more little surprise... 🌙",
     secretHeadline: "WE EAT US 🌙✨",
-    secretSub: "Cozy, private moments made just for the two of us...",
+    secretSub: "A little corner made just for the two of us...",
     secretStepHint: "👇 Tap to unlock each step of our night in order:",
+    beer1MysteryTitle: "Step 1: How does our night begin? 🤫",
+    beer1MysteryDesc: "Tap to discover the first surprise...",
     beer1Title: "1. Cold beers & snacks",
     beer1Desc: "Sipping cold beers, snacking and talking all night.",
+    beer2MysteryTitle: "Step 2: A little surprise is waiting 🤫",
+    beer2MysteryDesc: "Tap to discover the next step...",
     beer2LockedTitle: "Step 2: Mystery waiting 🤫",
     beer2LockedDesc: "Complete Step 1 to unlock the next surprise...",
     beer2Title: "2. Netflix & cozy blankets",
     beer2Desc: "Favorite movie, cuddling in bed under warm blankets.",
     beer3LockedTitle: "Step 3: The sweetest moment 🌙",
     beer3LockedDesc: "Secret only reveals after completing previous steps...",
+    beer3MysteryTitle: "Step 3: The sweetest moment is waiting 🌙",
+    beer3MysteryDesc: "Tap to discover the final surprise...",
     beer3Title: "3. ...and then \"We eat us\"",
     beer3Desc: "Intimate, sweet private space belonging just to us.",
     secretCompleteText: "A perfect cozy night of our own... Always with you 💕",
@@ -635,6 +645,9 @@ const secretState = {
 
 function renderSecretLayer() {
   const secretLayer = document.getElementById('secretLayer');
+  const bucketList = document.querySelector('.bucket-list');
+  const passBarcode = document.querySelector('.pass-barcode');
+  const triggerWrapper = document.querySelector('.secret-trigger-wrapper');
   const unlockBtn = document.getElementById('secretUnlockBtn');
   const secretBtnTextSpan = document.getElementById('secretBtnTextSpan');
   const secretCompleteCard = document.getElementById('secretCompleteCard');
@@ -644,14 +657,19 @@ function renderSecretLayer() {
     secretLayer.setAttribute('aria-hidden', String(!secretState.isOpen));
   }
 
+  if (bucketList) bucketList.hidden = secretState.isOpen;
+  if (passBarcode) passBarcode.hidden = secretState.isOpen;
+
+  if (triggerWrapper) {
+    triggerWrapper.style.display = secretState.isOpen ? 'none' : 'block';
+  }
+
   if (unlockBtn) {
     unlockBtn.setAttribute('aria-expanded', String(secretState.isOpen));
   }
 
   if (secretBtnTextSpan) {
-    secretBtnTextSpan.innerText = secretState.isOpen 
-      ? TRANSLATIONS[currentLang].secretBtnClose 
-      : TRANSLATIONS[currentLang].secretBtnText;
+    secretBtnTextSpan.innerText = TRANSLATIONS[currentLang].secretBtnText;
   }
 
   // Step 1
@@ -662,10 +680,10 @@ function renderSecretLayer() {
     const icon1 = document.getElementById('beerIcon1');
     const title1 = document.getElementById('beerTitle1');
     const desc1 = document.getElementById('beerDesc1');
-    if (icon1) icon1.innerText = '🍺';
-    if (title1) title1.innerText = TRANSLATIONS[currentLang].beer1Title;
-    if (desc1) desc1.innerText = TRANSLATIONS[currentLang].beer1Desc;
-    step1.setAttribute('aria-label', `${TRANSLATIONS[currentLang].beer1Title}: ${TRANSLATIONS[currentLang].beer1Desc}`);
+    if (icon1) icon1.innerText = isCompleted ? '🍺' : '🔒';
+    if (title1) title1.innerText = TRANSLATIONS[currentLang][isCompleted ? 'beer1Title' : 'beer1MysteryTitle'];
+    if (desc1) desc1.innerText = TRANSLATIONS[currentLang][isCompleted ? 'beer1Desc' : 'beer1MysteryDesc'];
+    step1.setAttribute('aria-label', `${title1.innerText}: ${desc1.innerText}`);
   }
 
   // Step 2
@@ -679,10 +697,10 @@ function renderSecretLayer() {
 
     if (isUnlocked) {
       step2.className = `beer-card ${isCompleted ? 'completed' : (secretState.unlockedStep === 2 && !isCompleted ? 'active-step' : '')}`;
-      if (icon2) icon2.innerText = '🎬';
-      if (title2) title2.innerText = TRANSLATIONS[currentLang].beer2Title;
-      if (desc2) desc2.innerText = TRANSLATIONS[currentLang].beer2Desc;
-      step2.setAttribute('aria-label', `${TRANSLATIONS[currentLang].beer2Title}: ${TRANSLATIONS[currentLang].beer2Desc}`);
+      if (icon2) icon2.innerText = isCompleted ? '🎬' : '🔒';
+      if (title2) title2.innerText = TRANSLATIONS[currentLang][isCompleted ? 'beer2Title' : 'beer2MysteryTitle'];
+      if (desc2) desc2.innerText = TRANSLATIONS[currentLang][isCompleted ? 'beer2Desc' : 'beer2MysteryDesc'];
+      step2.setAttribute('aria-label', `${title2.innerText}: ${desc2.innerText}`);
     } else {
       step2.className = 'beer-card locked-step';
       if (icon2) icon2.innerText = '🔒';
@@ -703,10 +721,10 @@ function renderSecretLayer() {
 
     if (isUnlocked) {
       step3.className = `beer-card ${isCompleted ? 'completed' : (secretState.unlockedStep === 3 && !isCompleted ? 'active-step' : '')}`;
-      if (icon3) icon3.innerText = '🕯️';
-      if (title3) title3.innerText = TRANSLATIONS[currentLang].beer3Title;
-      if (desc3) desc3.innerText = TRANSLATIONS[currentLang].beer3Desc;
-      step3.setAttribute('aria-label', `${TRANSLATIONS[currentLang].beer3Title}: ${TRANSLATIONS[currentLang].beer3Desc}`);
+      if (icon3) icon3.innerText = isCompleted ? '🕯️' : '🔒';
+      if (title3) title3.innerText = TRANSLATIONS[currentLang][isCompleted ? 'beer3Title' : 'beer3MysteryTitle'];
+      if (desc3) desc3.innerText = TRANSLATIONS[currentLang][isCompleted ? 'beer3Desc' : 'beer3MysteryDesc'];
+      step3.setAttribute('aria-label', `${title3.innerText}: ${desc3.innerText}`);
     } else {
       step3.className = 'beer-card locked-step';
       if (icon3) icon3.innerText = '🔒';
@@ -740,15 +758,14 @@ function initSecretLayer() {
 
   if (unlockBtn) {
     unlockBtn.addEventListener('click', () => {
-      secretState.isOpen = !secretState.isOpen;
+      if (secretState.isOpen) return; // One-way opening
+      secretState.isOpen = true;
       renderSecretLayer();
       
-      if (secretState.isOpen) {
-        sounds.playCheers();
-        triggerGoldConfetti();
-        if (secretLayer) {
-          secretLayer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+      sounds.playCheers();
+      triggerGoldConfetti();
+      if (secretLayer) {
+        secretLayer.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     });
   }

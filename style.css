@@ -1027,6 +1027,7 @@ body {
 /* Hidden Secret Layer Card */
 .secret-layer-card {
   display: none;
+  scroll-margin-top: 16px;
   background: linear-gradient(145deg, #2d3436 0%, #1e272e 100%);
   border: 1.5px solid rgba(255, 215, 0, 0.35);
   border-radius: var(--radius-md);

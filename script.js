@@ -33,7 +33,7 @@ const TRANSLATIONS = {
     btnToStep2: "Anh còn một bất ngờ này nữa cho em nè... ✨",
     tripBadge: "🇻🇳 HÀ NỘI MÙA THU CÙNG EM 🍂 🇻🇳",
     inviteTitle: "Em có muốn cùng anh đi vi vu Hà Nội mùa thu này không?",
-    inviteSub: "Ăn phở nóng hổi lúc trời se lạnh, nhâm nhi cà phê trứng béo ngậy, dạo phố đi bộ Hồ Gươm và cùng nhau đi bộ ngắm hoàng hôn Hồ Tây... 🌇☕",
+    inviteSub: "Ăn phở nóng hổi lúc trời se lạnh, nhâm nhi cà phê trứng béo ngậy, dạo phố cổ và cùng nhau khám phá những góc thật xinh của Hà Nội... 🌇☕",
     questionPrompt: "Em chọn đi nàooo, không được chọn Không đâu ó 😜👇",
     yesBtnText: "CÓ LIỀN LUÔN",
     noBtnText: "Hông thèm",
@@ -56,14 +56,26 @@ const TRANSLATIONS = {
     benefitVal: "Ăn uống thả ga, chill & chụp ảnh đẹp 📸",
     bucketTitle: "📋 Danh sách việc nhất định phải làm cùng nhau:",
     check1: "Uống cà phê trứng ngắm phố cổ ☕",
-    check2: "Cùng nhau đi bộ dạo quanh Hồ Tây đón gió mát 🌇",
+    check2: "Cùng nhau tham quan và khám phá những góc xinh ở Hà Nội 🌇",
     check3: "Ăn phở đêm xì xụp ấm bụng 🥢",
     check4: "Ăn kem Tràng Tiền dạo phố đi bộ Hồ Gươm 🍦",
     check5: "Chụp 10,000 bức ảnh thật xinh cho em 📸",
     secretBtnText: "✨ Anh còn một điều nhỏ muốn bật mí... 🌙",
+    secretMysteryHeadline: "Cánh cửa cuối cùng đang chờ em... 🌙",
     secretHeadline: "WE EAT US 🌙✨",
     secretSub: "Một góc nhỏ chỉ dành cho hai đứa mình...",
-    secretStepHint: "👇 Chạm mở khóa từng bước dưới đây nha bé iu:",
+    secretStepHint: "👇 Chạm để khám phá từng hoạt động riêng tư của hai đứa mình:",
+    activityBeerMysteryTitle: "Một điều ấm áp đang chờ em... 🤫",
+    activityBeerMysteryDesc: "Chạm để mở khóa hoạt động đầu tiên.",
+    activityBeerTitle: "Khui lon bia mát & ăn vặt",
+    activityBeerDesc: "Nhâm nhi chút bia, ăn snack và tâm sự cùng nhau.",
+    activityNetflixMysteryTitle: "Một điều dịu dàng đang chờ em... 🌙",
+    activityNetflixMysteryDesc: "Chạm để mở khóa hoạt động tiếp theo.",
+    activityNetflixTitle: "Netflix & đắp chăn ấm",
+    activityNetflixDesc: "Chọn một bộ phim, cuộn tròn trong chăn và ở cạnh nhau.",
+    finalMysteryTitle: "Cánh cửa cuối cùng đang chờ em...",
+    finalMysteryDesc: "Một điều chỉ hai đứa mình hiểu.",
+    finalRevealDesc: "Không gian riêng tư, ngọt ngào chỉ thuộc về hai đứa mình.",
     beer1MysteryTitle: "Bước 1: Một buổi tối bắt đầu thế nào? 🤫",
     beer1MysteryDesc: "Chạm để khám phá điều đầu tiên nha...",
     beer1Title: "Khui lon bia mát & ăn vặt",
@@ -78,6 +90,8 @@ const TRANSLATIONS = {
     beer3LockedDesc: "Bí mật chỉ mở ra sau khi hoàn thành 2 bước trước nha...",
     beer3MysteryTitle: "Bước 3: Điều ngọt ngào nhất đang đợi em 🌙",
     beer3MysteryDesc: "Chạm để khám phá điều cuối cùng nha...",
+    finalYesText: "Mở bí mật ✨",
+    finalNoText: "Không",
     beer3Title: "...và rồi \"We eat us\"",
     beer3Desc: "Không gian riêng tư, ngọt ngào chỉ thuộc về hai đứa mình.",
     secretCompleteText: "Trọn vẹn một buổi tối tuyệt vời của hai đứa mình... Thương em 💕",
@@ -128,7 +142,7 @@ const TRANSLATIONS = {
     btnToStep2: "I have a special surprise waiting for you... ✨",
     tripBadge: "🇻🇳 AUTUMN HANOI WITH YOU 🍂 🇻🇳",
     inviteTitle: "Will you go on an autumn Hanoi trip with me?",
-    inviteSub: "Cozy hot bowls of Pho, creamy authentic Egg Coffee, walking along Old Quarter, and strolling around West Lake together at sunset... 🌇☕",
+    inviteSub: "Cozy hot bowls of Pho, creamy authentic Egg Coffee, exploring the Old Quarter and discovering beautiful corners of Hanoi together... 🌇☕",
     questionPrompt: "Choose wisely, 'No' is not an option 😜👇",
     yesBtnText: "YES OF COURSE!",
     noBtnText: "No thanks",
@@ -151,14 +165,26 @@ const TRANSLATIONS = {
     benefitVal: "Endless food dates, chill vibes & photos 📸",
     bucketTitle: "📋 Our Hanoi Bucket List:",
     check1: "Egg coffee in Hanoi Old Quarter ☕",
-    check2: "Walking together around West Lake breeze 🌇",
+    check2: "Exploring beautiful corners of Hanoi together 🌇",
     check3: "Late night hot Phở dates 🥢",
     check4: "Tràng Tiền Ice Cream walk by the lake 🍦",
     check5: "Take 10,000 aesthetic photos of you 📸",
     secretBtnText: "✨ There’s one more little surprise... 🌙",
+    secretMysteryHeadline: "The final door is waiting... 🌙",
     secretHeadline: "WE EAT US 🌙✨",
     secretSub: "A little corner made just for the two of us...",
-    secretStepHint: "👇 Tap to unlock each step of our night in order:",
+    secretStepHint: "👇 Tap to discover each private moment made for us:",
+    activityBeerMysteryTitle: "Something cozy is waiting... 🤫",
+    activityBeerMysteryDesc: "Tap to unlock the first private moment.",
+    activityBeerTitle: "Cold beers & snacks",
+    activityBeerDesc: "Sipping cold beers, snacking and talking together.",
+    activityNetflixMysteryTitle: "Something gentle is waiting... 🌙",
+    activityNetflixMysteryDesc: "Tap to unlock the next private moment.",
+    activityNetflixTitle: "Netflix & cozy blankets",
+    activityNetflixDesc: "Pick a movie, curl up under warm blankets and stay close.",
+    finalMysteryTitle: "The final door is waiting...",
+    finalMysteryDesc: "A little secret only the two of us understand.",
+    finalRevealDesc: "A private, sweet space made just for the two of us.",
     beer1MysteryTitle: "Step 1: How does our night begin? 🤫",
     beer1MysteryDesc: "Tap to discover the first surprise...",
     beer1Title: "1. Cold beers & snacks",
@@ -173,6 +199,8 @@ const TRANSLATIONS = {
     beer3LockedDesc: "Secret only reveals after completing previous steps...",
     beer3MysteryTitle: "Step 3: The sweetest moment is waiting 🌙",
     beer3MysteryDesc: "Tap to discover the final surprise...",
+    finalYesText: "Unlock the secret ✨",
+    finalNoText: "No",
     beer3Title: "3. ...and then \"We eat us\"",
     beer3Desc: "Intimate, sweet private space belonging just to us.",
     secretCompleteText: "A perfect cozy night of our own... Always with you 💕",
@@ -620,6 +648,8 @@ function initStep3Celebration() {
 
     // Reset secret state cleanly
     secretState.isOpen = false;
+    secretState.completedActivities.clear();
+    secretState.finalUnlocked = false;
     secretState.unlockedStep = 1;
     secretState.completedSteps.clear();
     renderSecretLayer();
@@ -639,26 +669,73 @@ function initStep3Celebration() {
 // 7. SECRET LAYER: STATE-DRIVEN PROGRESSIVE MYSTERY STORY RITUAL
 const secretState = {
   isOpen: false,
+  completedActivities: new Set(),
+  finalUnlocked: false,
   unlockedStep: 1, // 1: only step 1 unlocked, 2: steps 1 & 2 unlocked, 3: all steps unlocked
   completedSteps: new Set()
 };
 
 function renderSecretLayer() {
   const secretLayer = document.getElementById('secretLayer');
-  const bucketList = document.querySelector('.bucket-list');
-  const passBarcode = document.querySelector('.pass-barcode');
+  const boardingPass = document.querySelector('.boarding-pass');
   const triggerWrapper = document.querySelector('.secret-trigger-wrapper');
   const unlockBtn = document.getElementById('secretUnlockBtn');
   const secretBtnTextSpan = document.getElementById('secretBtnTextSpan');
   const secretCompleteCard = document.getElementById('secretCompleteCard');
+  const secretHeadline = document.querySelector('.secret-headline');
+  const finalSecretCard = document.getElementById('finalSecretCard');
+  const finalRevealCard = document.getElementById('finalRevealCard');
+  const activityBeer = document.getElementById('activityBeer');
+  const activityNetflix = document.getElementById('activityNetflix');
+  const dict = TRANSLATIONS[currentLang];
+  const completedActivities = secretState.completedActivities;
+
+  if (secretLayer) {
+    secretLayer.classList.toggle('show', secretState.isOpen);
+    secretLayer.setAttribute('aria-hidden', String(!secretState.isOpen));
+  }
+  if (boardingPass) {
+    boardingPass.hidden = secretState.isOpen;
+    boardingPass.style.display = secretState.isOpen ? 'none' : '';
+  }
+  if (triggerWrapper) triggerWrapper.style.display = secretState.isOpen ? 'none' : 'block';
+  if (unlockBtn) unlockBtn.setAttribute('aria-expanded', String(secretState.isOpen));
+  if (secretBtnTextSpan) secretBtnTextSpan.innerText = dict.secretBtnText;
+  if (secretHeadline) secretHeadline.innerText = secretState.finalUnlocked ? dict.secretHeadline : dict.secretMysteryHeadline;
+  [activityBeer, activityNetflix].forEach((card) => {
+    if (!card) return;
+    const activity = card.dataset.activity;
+    const isCompleted = completedActivities.has(activity);
+    const title = card.querySelector('h5');
+    const desc = card.querySelector('p');
+    const content = activity === 'beer'
+      ? ['activityBeerTitle', 'activityBeerDesc', 'activityBeerMysteryTitle', 'activityBeerMysteryDesc']
+      : ['activityNetflixTitle', 'activityNetflixDesc', 'activityNetflixMysteryTitle', 'activityNetflixMysteryDesc'];
+    card.classList.toggle('selected', isCompleted);
+    card.setAttribute('aria-pressed', String(isCompleted));
+    card.querySelector('.beer-icon').innerText = isCompleted ? (activity === 'beer' ? '🍺' : '🎬') : '🔒';
+    title.innerText = dict[isCompleted ? content[0] : content[2]];
+    desc.innerText = dict[isCompleted ? content[1] : content[3]];
+    card.setAttribute('aria-label', `${title.innerText}: ${desc.innerText}`);
+  });
+  if (finalSecretCard) finalSecretCard.hidden = completedActivities.size < 2 || secretState.finalUnlocked;
+  if (finalRevealCard) {
+    finalRevealCard.hidden = !secretState.finalUnlocked;
+    const revealDesc = finalRevealCard.querySelector('[data-i18n="finalRevealDesc"]');
+    if (revealDesc) revealDesc.innerText = dict.finalRevealDesc;
+  }
+  if (secretCompleteCard) secretCompleteCard.hidden = true;
+  return;
 
   if (secretLayer) {
     secretLayer.classList.toggle('show', secretState.isOpen);
     secretLayer.setAttribute('aria-hidden', String(!secretState.isOpen));
   }
 
-  if (bucketList) bucketList.hidden = secretState.isOpen;
-  if (passBarcode) passBarcode.hidden = secretState.isOpen;
+  if (boardingPass) {
+    boardingPass.hidden = secretState.isOpen;
+    boardingPass.style.display = secretState.isOpen ? 'none' : '';
+  }
 
   if (triggerWrapper) {
     triggerWrapper.style.display = secretState.isOpen ? 'none' : 'block';
@@ -670,6 +747,12 @@ function renderSecretLayer() {
 
   if (secretBtnTextSpan) {
     secretBtnTextSpan.innerText = TRANSLATIONS[currentLang].secretBtnText;
+  }
+
+  if (secretHeadline) {
+    secretHeadline.innerText = secretState.completedSteps.has(3)
+      ? TRANSLATIONS[currentLang].secretHeadline
+      : TRANSLATIONS[currentLang].secretMysteryHeadline;
   }
 
   // Step 1
@@ -718,15 +801,18 @@ function renderSecretLayer() {
     const icon3 = document.getElementById('beerIcon3');
     const title3 = document.getElementById('beerTitle3');
     const desc3 = document.getElementById('beerDesc3');
+    const finalChoiceActions = document.getElementById('finalChoiceActions');
 
     if (isUnlocked) {
-      step3.className = `beer-card ${isCompleted ? 'completed' : (secretState.unlockedStep === 3 && !isCompleted ? 'active-step' : '')}`;
+      step3.className = `beer-card ${isCompleted ? 'completed' : 'final-secret-step'}`;
       if (icon3) icon3.innerText = isCompleted ? '🕯️' : '🔒';
       if (title3) title3.innerText = TRANSLATIONS[currentLang][isCompleted ? 'beer3Title' : 'beer3MysteryTitle'];
       if (desc3) desc3.innerText = TRANSLATIONS[currentLang][isCompleted ? 'beer3Desc' : 'beer3MysteryDesc'];
       step3.setAttribute('aria-label', `${title3.innerText}: ${desc3.innerText}`);
+      if (finalChoiceActions) finalChoiceActions.hidden = isCompleted;
     } else {
       step3.className = 'beer-card locked-step';
+      if (finalChoiceActions) finalChoiceActions.hidden = true;
       if (icon3) icon3.innerText = '🔒';
       if (title3) title3.innerText = TRANSLATIONS[currentLang].beer3LockedTitle;
       if (desc3) desc3.innerText = TRANSLATIONS[currentLang].beer3LockedDesc;
@@ -755,6 +841,10 @@ function initSecretLayer() {
   const step1 = document.getElementById('secretStep1');
   const step2 = document.getElementById('secretStep2');
   const step3 = document.getElementById('secretStep3');
+  const activityBeer = document.getElementById('activityBeer');
+  const activityNetflix = document.getElementById('activityNetflix');
+  const finalYesBtn = document.getElementById('finalYesBtn');
+  const finalNoBtn = document.getElementById('finalNoBtn');
 
   if (unlockBtn) {
     unlockBtn.addEventListener('click', () => {
@@ -769,6 +859,39 @@ function initSecretLayer() {
       }
     });
   }
+
+  const selectActivity = (activity) => {
+    if (secretState.completedActivities.has(activity)) return;
+    secretState.completedActivities.add(activity);
+    renderSecretLayer();
+    sounds.playChime();
+  };
+  bindInteractiveAction(activityBeer, () => selectActivity('beer'));
+  bindInteractiveAction(activityNetflix, () => selectActivity('netflix'));
+
+  if (finalYesBtn) {
+    finalYesBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      secretState.finalUnlocked = true;
+      renderSecretLayer();
+      sounds.playFanfare();
+      triggerGrandCelebration();
+    });
+  }
+
+  if (finalNoBtn) {
+    const escapeFinalNo = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      finalNoBtn.style.transform = `translate(${Math.floor(Math.random() * 120) - 60}px, ${Math.floor(Math.random() * 60) - 30}px)`;
+    };
+    finalNoBtn.addEventListener('mouseenter', escapeFinalNo);
+    finalNoBtn.addEventListener('pointerdown', escapeFinalNo);
+    finalNoBtn.addEventListener('touchstart', escapeFinalNo, { passive: false });
+    finalNoBtn.addEventListener('keydown', escapeFinalNo);
+    finalNoBtn.addEventListener('click', escapeFinalNo);
+  }
+  return;
 
   // Step 1
   bindInteractiveAction(step1, () => {
@@ -846,6 +969,19 @@ function initSecretLayer() {
       renderSecretLayer();
     }, 300);
   });
+
+  if (finalNoBtn) {
+    const escapeFinalNo = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      finalNoBtn.style.transform = `translate(${Math.floor(Math.random() * 120) - 60}px, ${Math.floor(Math.random() * 60) - 30}px)`;
+    };
+    finalNoBtn.addEventListener('mouseenter', escapeFinalNo);
+    finalNoBtn.addEventListener('pointerdown', escapeFinalNo);
+    finalNoBtn.addEventListener('touchstart', escapeFinalNo, { passive: false });
+    finalNoBtn.addEventListener('keydown', escapeFinalNo);
+    finalNoBtn.addEventListener('click', escapeFinalNo);
+  }
 }
 
 // Step Switching

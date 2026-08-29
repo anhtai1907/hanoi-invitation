@@ -1069,11 +1069,11 @@ body {
   font-size: 1.6rem;
   font-weight: 900;
   letter-spacing: 1.5px;
-  background: linear-gradient(135deg, #ffd32a, #ff9f1a, #ff4757);
+  background: linear-gradient(135deg, #ffb3c6, #ff758c, #c084fc);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 6px;
-  text-shadow: 0 0 20px rgba(255, 165, 2, 0.3);
+  text-shadow: 0 0 20px rgba(255, 117, 140, 0.3);
 }
 
 .secret-sub {
@@ -1200,6 +1200,89 @@ body {
   animation: revealStoryCard 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+.activity-card.selected {
+  background: rgba(46, 213, 115, 0.14);
+  border-color: #2ed573;
+  box-shadow: 0 0 16px rgba(46, 213, 115, 0.25);
+}
+
+.final-secret-card,
+.final-reveal-card {
+  margin-top: 14px;
+  padding: 18px 16px;
+  border: 1.5px solid #ffd32a;
+  border-radius: var(--radius-sm);
+  text-align: center;
+  background: linear-gradient(135deg, rgba(255, 211, 42, 0.14), rgba(255, 71, 87, 0.14));
+  box-shadow: 0 0 20px rgba(255, 211, 42, 0.22);
+  animation: completePopIn 0.45s ease;
+}
+
+.final-secret-card[hidden],
+.final-reveal-card[hidden] {
+  display: none;
+}
+
+.final-secret-icon,
+.final-reveal-icon {
+  font-size: 2rem;
+  margin-bottom: 6px;
+}
+
+.final-secret-copy h4 {
+  color: #ffd32a;
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.final-reveal-card h4 {
+  background: linear-gradient(135deg, #ffb3c6, #ff758c, #c084fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.15rem;
+  margin-bottom: 4px;
+}
+
+.final-secret-copy p,
+.final-reveal-card p {
+  color: #d2dae2;
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.beer-card.final-secret-step {
+  flex-wrap: wrap;
+  background: linear-gradient(135deg, rgba(255, 165, 2, 0.16), rgba(255, 71, 87, 0.12));
+  border-color: #ffd32a;
+  box-shadow: 0 0 20px rgba(255, 211, 42, 0.28);
+}
+
+.final-choice-actions {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding-top: 4px;
+}
+
+.final-choice-actions[hidden] {
+  display: none;
+}
+
+.final-yes-btn,
+.final-no-btn {
+  padding: 9px 16px;
+  font-size: 0.82rem;
+}
+
+.final-no-btn {
+  background: rgba(255, 255, 255, 0.08);
+  color: #a4b0be;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  transition: transform 0.15s ease;
+}
+
 @keyframes revealStoryCard {
   0% { transform: scale(0.92); opacity: 0.3; filter: blur(3px); }
   100% { transform: scale(1); opacity: 1; filter: blur(0); }
@@ -1314,10 +1397,11 @@ body {
 
 .love-footer {
   text-align: center;
-  font-family: var(--font-hand);
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #e84118;
+  font-family: var(--font-main);
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  color: var(--primary);
   line-height: 1.4;
   padding: 0 10px;
 }

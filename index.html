@@ -143,7 +143,7 @@
             Em có muốn cùng anh đi vi vu Hà Nội mùa thu này không?
           </h2>
           <p class="invite-sub" data-i18n="inviteSub">
-            Ăn phở nóng hổi lúc trời se lạnh, nhâm nhi cà phê trứng béo ngậy, dạo phố đi bộ Hồ Gươm và cùng nhau đi bộ ngắm hoàng hôn Hồ Tây... 🌇☕
+            Ăn phở nóng hổi lúc trời se lạnh, nhâm nhi cà phê trứng béo ngậy, dạo phố cổ và cùng nhau khám phá những góc thật xinh của Hà Nội... 🌇☕
           </p>
         </div>
 
@@ -151,7 +151,7 @@
         <div class="hanoi-tags">
           <span class="tag-item">☕ Cà phê trứng Giảng</span>
           <span class="tag-item">🥢 Phở Bát Đàn nóng hổi</span>
-          <span class="tag-item">🚶‍♀️ Đi bộ ngắm Hồ Tây</span>
+          <span class="tag-item">🚶‍♀️ Cùng nhau khám phá Hà Nội</span>
           <span class="tag-item">🍦 Kem Tràng Tiền</span>
           <span class="tag-item">📸 10,000 tấm ảnh siêu xinh</span>
         </div>
@@ -253,7 +253,7 @@
             <div class="bucket-title" data-i18n="bucketTitle">📋 Danh sách việc nhất định phải làm cùng nhau:</div>
             <ul class="checklist">
               <li><input type="checkbox" checked disabled /> <span data-i18n="check1">Uống cà phê trứng ngắm phố cổ ☕</span></li>
-              <li><input type="checkbox" checked disabled /> <span data-i18n="check2">Cùng nhau đi bộ dạo quanh Hồ Tây đón gió mát 🌇</span></li>
+              <li><input type="checkbox" checked disabled /> <span data-i18n="check2">Cùng nhau tham quan và khám phá những góc xinh ở Hà Nội 🌇</span></li>
               <li><input type="checkbox" checked disabled /> <span data-i18n="check3">Ăn phở đêm xì xụp ấm bụng 🥢</span></li>
               <li><input type="checkbox" checked disabled /> <span data-i18n="check4">Ăn kem Tràng Tiền dạo phố đi bộ Hồ Gươm 🍦</span></li>
               <li><input type="checkbox" checked disabled /> <span data-i18n="check5">Chụp 10,000 bức ảnh thật xinh cho em 📸</span></li>
@@ -282,50 +282,57 @@
       <div class="secret-layer-card" id="secretLayer" aria-hidden="true">
         <div class="secret-header">
           <div class="secret-neon-tag">SPECIAL IN-ROOM DATE • CHILL & US 🕯️</div>
-          <h3 class="secret-headline" data-i18n="secretHeadline">WE EAT US 🌙✨</h3>
+          <h3 class="secret-headline" data-i18n="secretMysteryHeadline">Cánh cửa cuối cùng đang chờ em... 🌙</h3>
           <p class="secret-sub" data-i18n="secretSub">
             Một góc nhỏ chỉ dành cho hai đứa mình...
           </p>
           <div class="secret-step-hint" id="secretStepHint" data-i18n="secretStepHint">
-            <span class="hint-icon">👇</span> Chạm mở khóa từng bước dưới đây nha bé iu:
+            <span class="hint-icon">👇</span> Chạm để khám phá từng hoạt động riêng tư của hai đứa mình:
           </div>
         </div>
 
-        <!-- Cozy In-Room 3-Step Progressive Story Sequence -->
+        <!-- Two private activities, then the final secret -->
         <div class="beer-section">
-          <div class="beer-grid" id="secretStepsGrid">
-            <!-- Step 1: Cold Beer & Talks (Initial Active Step) -->
-            <div class="beer-card active-step" id="secretStep1" data-step="1" data-beer="beer" role="button" tabindex="0">
-              <span class="step-num">1</span>
-              <div class="beer-icon" id="beerIcon1">🍺</div>
+          <div class="beer-grid" id="secretActivityGrid">
+            <div class="beer-card activity-card" id="activityBeer" data-activity="beer" role="button" tabindex="0">
+              <div class="beer-icon">🍺</div>
               <div class="beer-info">
-                <h5 id="beerTitle1" data-i18n="beer1Title">Khui lon bia mát & ăn vặt</h5>
-                <p id="beerDesc1" data-i18n="beer1Desc">Nhâm nhi chút bia, ăn snack và tâm sự thâu đêm cùng nhau.</p>
+                <h5 data-i18n="activityBeerMysteryTitle">Một điều ấm áp đang chờ em... 🤫</h5>
+                <p data-i18n="activityBeerMysteryDesc">Chạm để mở khóa hoạt động đầu tiên.</p>
               </div>
               <div class="beer-check">✓</div>
             </div>
 
-            <!-- Step 2: Netflix & Cozy Bed (Initially Locked/Mystery) -->
-            <div class="beer-card locked-step" id="secretStep2" data-step="2" data-beer="netflix" role="button" tabindex="0">
-              <span class="step-num">2</span>
-              <div class="beer-icon" id="beerIcon2">🔒</div>
+            <div class="beer-card activity-card" id="activityNetflix" data-activity="netflix" role="button" tabindex="0">
+              <div class="beer-icon">🎬</div>
               <div class="beer-info">
-                <h5 id="beerTitle2" data-i18n="beer2LockedTitle">Bước 2: Bí mật đang đợi em 🤫</h5>
-                <p id="beerDesc2" data-i18n="beer2LockedDesc">Hoàn thành Bước 1 để mở khóa điều tiếp theo nha...</p>
+                <h5 data-i18n="activityNetflixMysteryTitle">Một điều dịu dàng đang chờ em... 🌙</h5>
+                <p data-i18n="activityNetflixMysteryDesc">Chạm để mở khóa hoạt động tiếp theo.</p>
               </div>
               <div class="beer-check">✓</div>
             </div>
+          </div>
 
-            <!-- Step 3: ...and then "We eat us" (Initially Locked/Mystery) -->
-            <div class="beer-card locked-step" id="secretStep3" data-step="3" data-beer="we_eat_us" role="button" tabindex="0">
-              <span class="step-num">3</span>
-              <div class="beer-icon" id="beerIcon3">🔒</div>
-              <div class="beer-info">
-                <h5 id="beerTitle3" data-i18n="beer3LockedTitle">Bước 3: Điều ngọt ngào nhất 🌙</h5>
-                <p id="beerDesc3" data-i18n="beer3LockedDesc">Bí mật chỉ mở ra sau khi hoàn thành 2 bước trước nha...</p>
-              </div>
-              <div class="beer-check">✓</div>
+          <div class="final-secret-card" id="finalSecretCard" hidden>
+            <div class="final-secret-icon">🌙</div>
+            <div class="final-secret-copy">
+              <h4 id="finalMysteryTitle" data-i18n="finalMysteryTitle">Cánh cửa cuối cùng đang chờ em...</h4>
+              <p id="finalMysteryDesc" data-i18n="finalMysteryDesc">Một điều chỉ hai đứa mình hiểu.</p>
             </div>
+            <div class="final-choice-actions" id="finalChoiceActions">
+              <button class="btn btn-yes final-yes-btn" id="finalYesBtn" type="button">
+                <span data-i18n="finalYesText">Mở bí mật ✨</span>
+              </button>
+              <button class="btn final-no-btn" id="finalNoBtn" type="button">
+                <span data-i18n="finalNoText">Không</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="final-reveal-card" id="finalRevealCard" hidden>
+            <div class="final-reveal-icon">💖✨</div>
+            <h4 data-i18n="secretHeadline">WE EAT US 🌙✨</h4>
+            <p data-i18n="finalRevealDesc">Không gian riêng tư, ngọt ngào chỉ thuộc về hai đứa mình.</p>
           </div>
 
           <!-- Toast Message on Step Choice -->

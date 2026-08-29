@@ -61,6 +61,7 @@ const TRANSLATIONS = {
     check4: "Ăn kem Tràng Tiền dạo phố đi bộ Hồ Gươm 🍦",
     check5: "Chụp 10,000 bức ảnh thật xinh cho em 📸",
     secretBtnText: "Mở khóa điều bí mật: \"WE EAT US\" 🌙🔓",
+    secretBtnClose: "Đóng điều bí mật 🌙✖",
     secretHeadline: "WE EAT US 🌙✨",
     secretSub: "Không gian riêng của hai đứa: Netflix, vài lon bia mát lạnh, đồ ăn ngon và chúng mình.",
     secretStepHint: "👇 Chạm mở khóa từng bước dưới đây nha bé iu:",
@@ -150,6 +151,7 @@ const TRANSLATIONS = {
     check4: "Tràng Tiền Ice Cream walk by the lake 🍦",
     check5: "Take 10,000 aesthetic photos of you 📸",
     secretBtnText: "Unlock Secret: \"WE EAT US\" 🌙🔓",
+    secretBtnClose: "Close Secret 🌙✖",
     secretHeadline: "WE EAT US 🌙✨",
     secretSub: "Our private space: Netflix, cold beers, good food and just us.",
     secretStepHint: "👇 Tap to unlock each step of our night in order:",
@@ -388,6 +390,19 @@ function applyTranslations() {
       el.innerText = dict[key];
     }
   });
+  renderSecretLayer();
+}
+
+// Accessibility Helper: Click & Keyboard (Enter/Space) Support
+function bindInteractiveAction(el, callback) {
+  if (!el) return;
+  el.addEventListener('click', callback);
+  el.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      callback(e);
+    }
+  });
 }
 
 // 3. Sound Toggle
@@ -423,7 +438,7 @@ function initStep1CarePackage() {
     const el = document.getElementById(item.id);
     if (!el) return;
 
-    el.addEventListener('click', () => {
+    bindInteractiveAction(el, () => {
       sounds.playChime();
       
       const feedback = el.querySelector('.click-feedback');
@@ -564,10 +579,19 @@ function initStep3Celebration() {
 
   replayBtn.addEventListener('click', () => {
     sounds.playPop();
-    energy = 25;
+    energy = 0;
     dodgeCount = 0;
     updateEnergyBar();
-    
+
+    const careCards = document.querySelectorAll('.care-card');
+    careCards.forEach(c => c.classList.remove('claimed'));
+
+    const toStep2Btn = document.getElementById('toStep2Btn');
+    if (toStep2Btn) toStep2Btn.classList.remove('pulse-btn');
+
+    const complimentToast = document.getElementById('complimentToast');
+    if (complimentToast) complimentToast.style.display = 'none';
+
     const yesBtn = document.getElementById('yesBtn');
     if (yesBtn) yesBtn.style.transform = 'scale(1)';
 
@@ -584,46 +608,14 @@ function initStep3Celebration() {
     const mascotAvatar = document.getElementById('mascotAvatar');
     if (mascotAvatar) mascotAvatar.innerText = '🥺';
 
-    // Reset secret layer progressive story sequence
-    completedSecretSteps.clear();
-    const secretLayer = document.getElementById('secretLayer');
-    if (secretLayer) secretLayer.classList.remove('show');
-
-    const secretCompleteCard = document.getElementById('secretCompleteCard');
-    if (secretCompleteCard) secretCompleteCard.classList.remove('show');
+    // Reset secret state cleanly
+    secretState.isOpen = false;
+    secretState.unlockedStep = 1;
+    secretState.completedSteps.clear();
+    renderSecretLayer();
 
     const cheersToast = document.getElementById('cheersToast');
     if (cheersToast) cheersToast.style.display = 'none';
-
-    // Reset Step 1 (Active)
-    const step1 = document.getElementById('secretStep1');
-    if (step1) {
-      step1.className = 'beer-card active-step';
-    }
-
-    // Reset Step 2 (Locked)
-    const step2 = document.getElementById('secretStep2');
-    if (step2) {
-      step2.className = 'beer-card locked-step';
-      const icon2 = document.getElementById('beerIcon2');
-      const title2 = document.getElementById('beerTitle2');
-      const desc2 = document.getElementById('beerDesc2');
-      if (icon2) icon2.innerText = '🔒';
-      if (title2) title2.innerText = TRANSLATIONS[currentLang].beer2LockedTitle;
-      if (desc2) desc2.innerText = TRANSLATIONS[currentLang].beer2LockedDesc;
-    }
-
-    // Reset Step 3 (Locked)
-    const step3 = document.getElementById('secretStep3');
-    if (step3) {
-      step3.className = 'beer-card locked-step';
-      const icon3 = document.getElementById('beerIcon3');
-      const title3 = document.getElementById('beerTitle3');
-      const desc3 = document.getElementById('beerDesc3');
-      if (icon3) icon3.innerText = '🔒';
-      if (title3) title3.innerText = TRANSLATIONS[currentLang].beer3LockedTitle;
-      if (desc3) desc3.innerText = TRANSLATIONS[currentLang].beer3LockedDesc;
-    }
 
     switchStep('step3', 'step1');
   });
@@ -634,123 +626,198 @@ function initStep3Celebration() {
   });
 }
 
-// 7. SECRET LAYER: "WE EAT US" PROGRESSIVE MYSTERY STORY RITUAL
-let completedSecretSteps = new Set();
+// 7. SECRET LAYER: STATE-DRIVEN PROGRESSIVE MYSTERY STORY RITUAL
+const secretState = {
+  isOpen: false,
+  unlockedStep: 1, // 1: only step 1 unlocked, 2: steps 1 & 2 unlocked, 3: all steps unlocked
+  completedSteps: new Set()
+};
+
+function renderSecretLayer() {
+  const secretLayer = document.getElementById('secretLayer');
+  const unlockBtn = document.getElementById('secretUnlockBtn');
+  const secretBtnTextSpan = document.getElementById('secretBtnTextSpan');
+  const secretCompleteCard = document.getElementById('secretCompleteCard');
+
+  if (secretLayer) {
+    secretLayer.classList.toggle('show', secretState.isOpen);
+    secretLayer.setAttribute('aria-hidden', String(!secretState.isOpen));
+  }
+
+  if (unlockBtn) {
+    unlockBtn.setAttribute('aria-expanded', String(secretState.isOpen));
+  }
+
+  if (secretBtnTextSpan) {
+    secretBtnTextSpan.innerText = secretState.isOpen 
+      ? TRANSLATIONS[currentLang].secretBtnClose 
+      : TRANSLATIONS[currentLang].secretBtnText;
+  }
+
+  // Step 1
+  const step1 = document.getElementById('secretStep1');
+  if (step1) {
+    const isCompleted = secretState.completedSteps.has(1);
+    step1.className = `beer-card ${isCompleted ? 'completed' : (secretState.unlockedStep === 1 ? 'active-step' : '')}`;
+    const icon1 = document.getElementById('beerIcon1');
+    const title1 = document.getElementById('beerTitle1');
+    const desc1 = document.getElementById('beerDesc1');
+    if (icon1) icon1.innerText = '🍺';
+    if (title1) title1.innerText = TRANSLATIONS[currentLang].beer1Title;
+    if (desc1) desc1.innerText = TRANSLATIONS[currentLang].beer1Desc;
+  }
+
+  // Step 2
+  const step2 = document.getElementById('secretStep2');
+  if (step2) {
+    const isUnlocked = secretState.unlockedStep >= 2;
+    const isCompleted = secretState.completedSteps.has(2);
+    const icon2 = document.getElementById('beerIcon2');
+    const title2 = document.getElementById('beerTitle2');
+    const desc2 = document.getElementById('beerDesc2');
+
+    if (isUnlocked) {
+      step2.className = `beer-card ${isCompleted ? 'completed' : (secretState.unlockedStep === 2 && !isCompleted ? 'active-step' : '')}`;
+      if (icon2) icon2.innerText = '🎬';
+      if (title2) title2.innerText = TRANSLATIONS[currentLang].beer2Title;
+      if (desc2) desc2.innerText = TRANSLATIONS[currentLang].beer2Desc;
+    } else {
+      step2.className = 'beer-card locked-step';
+      if (icon2) icon2.innerText = '🔒';
+      if (title2) title2.innerText = TRANSLATIONS[currentLang].beer2LockedTitle;
+      if (desc2) desc2.innerText = TRANSLATIONS[currentLang].beer2LockedDesc;
+    }
+  }
+
+  // Step 3
+  const step3 = document.getElementById('secretStep3');
+  if (step3) {
+    const isUnlocked = secretState.unlockedStep >= 3;
+    const isCompleted = secretState.completedSteps.has(3);
+    const icon3 = document.getElementById('beerIcon3');
+    const title3 = document.getElementById('beerTitle3');
+    const desc3 = document.getElementById('beerDesc3');
+
+    if (isUnlocked) {
+      step3.className = `beer-card ${isCompleted ? 'completed' : (secretState.unlockedStep === 3 && !isCompleted ? 'active-step' : '')}`;
+      if (icon3) icon3.innerText = '🕯️';
+      if (title3) title3.innerText = TRANSLATIONS[currentLang].beer3Title;
+      if (desc3) desc3.innerText = TRANSLATIONS[currentLang].beer3Desc;
+    } else {
+      step3.className = 'beer-card locked-step';
+      if (icon3) icon3.innerText = '🔒';
+      if (title3) title3.innerText = TRANSLATIONS[currentLang].beer3LockedTitle;
+      if (desc3) desc3.innerText = TRANSLATIONS[currentLang].beer3LockedDesc;
+    }
+  }
+
+  // Secret Complete Card
+  if (secretCompleteCard) {
+    if (secretState.completedSteps.size >= 3) {
+      secretCompleteCard.classList.add('show');
+      const completeText = secretCompleteCard.querySelector('.complete-text');
+      if (completeText) completeText.innerText = TRANSLATIONS[currentLang].secretCompleteText;
+    } else {
+      secretCompleteCard.classList.remove('show');
+    }
+  }
+}
 
 function initSecretLayer() {
   const unlockBtn = document.getElementById('secretUnlockBtn');
   const secretLayer = document.getElementById('secretLayer');
   const cheersToast = document.getElementById('cheersToast');
   const cheersMessage = document.getElementById('cheersMessage');
-  const secretCompleteCard = document.getElementById('secretCompleteCard');
 
   const step1 = document.getElementById('secretStep1');
   const step2 = document.getElementById('secretStep2');
   const step3 = document.getElementById('secretStep3');
 
-  unlockBtn.addEventListener('click', () => {
-    sounds.playCheers();
-    secretLayer.classList.toggle('show');
-    
-    if (secretLayer.classList.contains('show')) {
-      triggerGoldConfetti();
-      secretLayer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  });
-
-  // Step 1 Click
-  if (step1) {
-    step1.addEventListener('click', () => {
-      if (completedSecretSteps.has(1)) return;
+  if (unlockBtn) {
+    unlockBtn.addEventListener('click', () => {
+      secretState.isOpen = !secretState.isOpen;
+      renderSecretLayer();
       
-      completedSecretSteps.add(1);
-      step1.classList.remove('active-step');
-      step1.classList.add('completed');
-      sounds.playCheers();
+      if (secretState.isOpen) {
+        sounds.playCheers();
+        triggerGoldConfetti();
+        if (secretLayer) {
+          secretLayer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  }
 
-      // Display Toast 1
+  // Step 1
+  bindInteractiveAction(step1, () => {
+    if (secretState.completedSteps.has(1)) return;
+
+    secretState.completedSteps.add(1);
+    secretState.unlockedStep = Math.max(secretState.unlockedStep, 2);
+    renderSecretLayer();
+
+    if (step2) step2.classList.add('revealing');
+    sounds.playCheers();
+
+    if (cheersMessage && cheersToast) {
       cheersMessage.innerText = TRANSLATIONS[currentLang].beerToasts.beer;
       cheersToast.style.display = 'flex';
-      triggerMiniConfetti();
+    }
+    triggerMiniConfetti();
+  });
 
-      // Unlock Step 2 with reveal animation
-      if (step2) {
-        step2.classList.remove('locked-step');
-        step2.classList.add('active-step', 'revealing');
-        const icon2 = document.getElementById('beerIcon2');
-        const title2 = document.getElementById('beerTitle2');
-        const desc2 = document.getElementById('beerDesc2');
-        if (icon2) icon2.innerText = '🎬';
-        if (title2) title2.innerText = TRANSLATIONS[currentLang].beer2Title;
-        if (desc2) desc2.innerText = TRANSLATIONS[currentLang].beer2Desc;
-      }
-    });
-  }
-
-  // Step 2 Click
-  if (step2) {
-    step2.addEventListener('click', () => {
-      if (!completedSecretSteps.has(1)) {
-        sounds.playPop();
+  // Step 2
+  bindInteractiveAction(step2, () => {
+    if (secretState.unlockedStep < 2) {
+      sounds.playPop();
+      if (cheersMessage && cheersToast) {
         cheersMessage.innerText = TRANSLATIONS[currentLang].stepLockedToast;
         cheersToast.style.display = 'flex';
-        return;
       }
-      if (completedSecretSteps.has(2)) return;
+      return;
+    }
+    if (secretState.completedSteps.has(2)) return;
 
-      completedSecretSteps.add(2);
-      step2.classList.remove('active-step');
-      step2.classList.add('completed');
-      sounds.playChime();
+    secretState.completedSteps.add(2);
+    secretState.unlockedStep = Math.max(secretState.unlockedStep, 3);
+    renderSecretLayer();
 
-      // Display Toast 2
+    if (step3) step3.classList.add('revealing');
+    sounds.playChime();
+
+    if (cheersMessage && cheersToast) {
       cheersMessage.innerText = TRANSLATIONS[currentLang].beerToasts.netflix;
       cheersToast.style.display = 'flex';
-      triggerMiniConfetti();
+    }
+    triggerMiniConfetti();
+  });
 
-      // Unlock Step 3 with romantic reveal animation
-      if (step3) {
-        step3.classList.remove('locked-step');
-        step3.classList.add('active-step', 'revealing');
-        const icon3 = document.getElementById('beerIcon3');
-        const title3 = document.getElementById('beerTitle3');
-        const desc3 = document.getElementById('beerDesc3');
-        if (icon3) icon3.innerText = '🕯️';
-        if (title3) title3.innerText = TRANSLATIONS[currentLang].beer3Title;
-        if (desc3) desc3.innerText = TRANSLATIONS[currentLang].beer3Desc;
-      }
-    });
-  }
-
-  // Step 3 Click (Climax)
-  if (step3) {
-    step3.addEventListener('click', () => {
-      if (!completedSecretSteps.has(2)) {
-        sounds.playPop();
+  // Step 3 (Climax)
+  bindInteractiveAction(step3, () => {
+    if (secretState.unlockedStep < 3) {
+      sounds.playPop();
+      if (cheersMessage && cheersToast) {
         cheersMessage.innerText = TRANSLATIONS[currentLang].stepLockedToast;
         cheersToast.style.display = 'flex';
-        return;
       }
-      if (completedSecretSteps.has(3)) return;
+      return;
+    }
+    if (secretState.completedSteps.has(3)) return;
 
-      completedSecretSteps.add(3);
-      step3.classList.remove('active-step');
-      step3.classList.add('completed');
+    secretState.completedSteps.add(3);
+    renderSecretLayer();
 
-      // Display Toast 3
+    if (cheersMessage && cheersToast) {
       cheersMessage.innerText = TRANSLATIONS[currentLang].beerToasts.we_eat_us;
       cheersToast.style.display = 'flex';
+    }
 
-      // Grand Climax Celebration!
-      setTimeout(() => {
-        sounds.playFanfare();
-        triggerGrandCelebration();
-        if (secretCompleteCard) {
-          secretCompleteCard.classList.add('show');
-        }
-      }, 300);
-    });
-  }
+    setTimeout(() => {
+      sounds.playFanfare();
+      triggerGrandCelebration();
+      renderSecretLayer();
+    }, 300);
+  });
 }
 
 // Step Switching

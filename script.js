@@ -44,6 +44,10 @@ const TRANSLATIONS = {
     passengerName: CONFIG.girlfriendNameVI,
     driverLabel: "Bạn đồng hành:",
     driverName: "Anh người yêu 🤵‍♂️",
+    fromCode: "SÀI GÒN",
+    fromCity: "Nơi xuất phát 🛫",
+    toCode: "HÀ NỘI",
+    toCity: "Mùa thu cùng em 🍂",
     seatLabel: "Đồng hành:",
     seatVal: "Bên cạnh anh 💕",
     dateLabel: "Thời gian:",
@@ -59,14 +63,19 @@ const TRANSLATIONS = {
     secretBtnText: "Mở khóa điều bí mật: \"WE EAT US\" 🌙🔓",
     secretHeadline: "WE EAT US 🌙✨",
     secretSub: "Không gian riêng của hai đứa: Netflix, vài lon bia mát lạnh, đồ ăn ngon và chúng mình.",
-    secretStepHint: "👇 Chạm lần lượt 3 bước dưới đây nha bé iu:",
+    secretStepHint: "👇 Chạm mở khóa từng bước dưới đây nha bé iu:",
     beer1Title: "Khui lon bia mát & ăn vặt",
     beer1Desc: "Nhâm nhi chút bia, ăn snack và tâm sự thâu đêm cùng nhau.",
+    beer2LockedTitle: "Bước 2: Bí mật đang đợi em 🤫",
+    beer2LockedDesc: "Hoàn thành Bước 1 để mở khóa điều tiếp theo nha...",
     beer2Title: "Bật Netflix & lên giường đắp chăn ấm",
     beer2Desc: "Chọn bộ phim yêu thích, cuộn tròn trong chăn xem cùng nhau.",
+    beer3LockedTitle: "Bước 3: Điều ngọt ngào nhất 🌙",
+    beer3LockedDesc: "Bí mật chỉ mở ra sau khi hoàn thành 2 bước trước nha...",
     beer3Title: "...và rồi \"We eat us\"",
     beer3Desc: "Không gian riêng tư, ngọt ngào chỉ thuộc về hai đứa mình.",
     secretCompleteText: "Trọn vẹn một buổi tối tuyệt vời của hai đứa mình... Thương em 💕",
+    stepLockedToast: "Mở khóa bước trước đã nè bé iu 🌸",
     replayBtn: "Chơi lại từ đầu 🔄",
     confettiBtn: "Thêm pháo hoa & tim 🎊💖",
     loveFooter: "Thương em 💕",
@@ -88,9 +97,9 @@ const TRANSLATIONS = {
       "🌟 Lúc nào anh cũng ở đây ủng hộ và đồng hành cùng em nè"
     ],
     beerToasts: {
-      beer: "Bước 1: Cụng lon bia mát lạnh nè 🍺 Nhâm nhi và nói chuyện thâu đêm nha",
-      netflix: "Bước 2: Bật phim hay và cuộn tròn trong chăn ấm cùng em 🎬🍿",
-      we_eat_us: "Bước 3: Và rồi... chỉ có hai đứa mình ngọt ngào bên nhau 🕯️✨"
+      beer: "Bước 1 xong: Cụng lon bia mát lạnh nè 🍺 Nhâm nhi và nói chuyện thâu đêm nha",
+      netflix: "Bước 2 xong: Bật phim hay và cuộn tròn trong chăn ấm cùng em 🎬🍿",
+      we_eat_us: "Bước 3 xong: Và rồi... chỉ có hai đứa mình ngọt ngào bên nhau 🕯️✨"
     }
   },
   en: {
@@ -124,6 +133,10 @@ const TRANSLATIONS = {
     passengerName: CONFIG.girlfriendNameEN,
     driverLabel: "Travel partner:",
     driverName: "Your boyfriend 🤵‍♂️",
+    fromCode: "SAI GON",
+    fromCity: "Departure 🛫",
+    toCode: "HA NOI",
+    toCity: "Autumn with you 🍂",
     seatLabel: "Companion:",
     seatVal: "Right beside me 💕",
     dateLabel: "Date:",
@@ -139,14 +152,19 @@ const TRANSLATIONS = {
     secretBtnText: "Unlock Secret: \"WE EAT US\" 🌙🔓",
     secretHeadline: "WE EAT US 🌙✨",
     secretSub: "Our private space: Netflix, cold beers, good food and just us.",
-    secretStepHint: "👇 Tap all 3 steps in order to complete our night:",
+    secretStepHint: "👇 Tap to unlock each step of our night in order:",
     beer1Title: "1. Cold beers & snacks",
     beer1Desc: "Sipping cold beers, snacking and talking all night.",
+    beer2LockedTitle: "Step 2: Mystery waiting 🤫",
+    beer2LockedDesc: "Complete Step 1 to unlock the next surprise...",
     beer2Title: "2. Netflix & cozy blankets",
     beer2Desc: "Favorite movie, cuddling in bed under warm blankets.",
+    beer3LockedTitle: "Step 3: The sweetest moment 🌙",
+    beer3LockedDesc: "Secret only reveals after completing previous steps...",
     beer3Title: "3. ...and then \"We eat us\"",
     beer3Desc: "Intimate, sweet private space belonging just to us.",
     secretCompleteText: "A perfect cozy night of our own... Always with you 💕",
+    stepLockedToast: "Please unlock the previous step first 🌸",
     replayBtn: "Play again 🔄",
     confettiBtn: "More fireworks & hearts 🎊💖",
     loveFooter: "Love you 💕",
@@ -566,7 +584,7 @@ function initStep3Celebration() {
     const mascotAvatar = document.getElementById('mascotAvatar');
     if (mascotAvatar) mascotAvatar.innerText = '🥺';
 
-    // Reset secret layer 3-step sequence
+    // Reset secret layer progressive story sequence
     completedSecretSteps.clear();
     const secretLayer = document.getElementById('secretLayer');
     if (secretLayer) secretLayer.classList.remove('show');
@@ -577,13 +595,35 @@ function initStep3Celebration() {
     const cheersToast = document.getElementById('cheersToast');
     if (cheersToast) cheersToast.style.display = 'none';
 
-    const beerCards = document.querySelectorAll('.beer-card');
-    beerCards.forEach(c => {
-      c.classList.remove('completed', 'selected', 'active-step');
-      if (c.getAttribute('data-step') === '1') {
-        c.classList.add('active-step');
-      }
-    });
+    // Reset Step 1 (Active)
+    const step1 = document.getElementById('secretStep1');
+    if (step1) {
+      step1.className = 'beer-card active-step';
+    }
+
+    // Reset Step 2 (Locked)
+    const step2 = document.getElementById('secretStep2');
+    if (step2) {
+      step2.className = 'beer-card locked-step';
+      const icon2 = document.getElementById('beerIcon2');
+      const title2 = document.getElementById('beerTitle2');
+      const desc2 = document.getElementById('beerDesc2');
+      if (icon2) icon2.innerText = '🔒';
+      if (title2) title2.innerText = TRANSLATIONS[currentLang].beer2LockedTitle;
+      if (desc2) desc2.innerText = TRANSLATIONS[currentLang].beer2LockedDesc;
+    }
+
+    // Reset Step 3 (Locked)
+    const step3 = document.getElementById('secretStep3');
+    if (step3) {
+      step3.className = 'beer-card locked-step';
+      const icon3 = document.getElementById('beerIcon3');
+      const title3 = document.getElementById('beerTitle3');
+      const desc3 = document.getElementById('beerDesc3');
+      if (icon3) icon3.innerText = '🔒';
+      if (title3) title3.innerText = TRANSLATIONS[currentLang].beer3LockedTitle;
+      if (desc3) desc3.innerText = TRANSLATIONS[currentLang].beer3LockedDesc;
+    }
 
     switchStep('step3', 'step1');
   });
@@ -594,16 +634,19 @@ function initStep3Celebration() {
   });
 }
 
-// 7. SECRET LAYER: "WE EAT US" 3-STEP SEQUENTIAL RITUAL
+// 7. SECRET LAYER: "WE EAT US" PROGRESSIVE MYSTERY STORY RITUAL
 let completedSecretSteps = new Set();
 
 function initSecretLayer() {
   const unlockBtn = document.getElementById('secretUnlockBtn');
   const secretLayer = document.getElementById('secretLayer');
-  const beerCards = document.querySelectorAll('.beer-card');
   const cheersToast = document.getElementById('cheersToast');
   const cheersMessage = document.getElementById('cheersMessage');
   const secretCompleteCard = document.getElementById('secretCompleteCard');
+
+  const step1 = document.getElementById('secretStep1');
+  const step2 = document.getElementById('secretStep2');
+  const step3 = document.getElementById('secretStep3');
 
   unlockBtn.addEventListener('click', () => {
     sounds.playCheers();
@@ -615,48 +658,99 @@ function initSecretLayer() {
     }
   });
 
-  beerCards.forEach(card => {
-    card.addEventListener('click', () => {
-      const stepNum = parseInt(card.getAttribute('data-step') || '1', 10);
-      const beerType = card.getAttribute('data-beer');
+  // Step 1 Click
+  if (step1) {
+    step1.addEventListener('click', () => {
+      if (completedSecretSteps.has(1)) return;
       
-      // Mark this card as completed
-      card.classList.add('completed');
-      card.classList.remove('active-step');
-      completedSecretSteps.add(stepNum);
+      completedSecretSteps.add(1);
+      step1.classList.remove('active-step');
+      step1.classList.add('completed');
+      sounds.playCheers();
 
-      // Play appropriate sound
-      if (stepNum === 1) {
-        sounds.playCheers();
-      } else {
-        sounds.playChime();
-      }
-
-      // Display Toast
-      const toastText = TRANSLATIONS[currentLang].beerToasts[beerType] || "Xong thêm một bước nè!";
-      cheersMessage.innerText = toastText;
+      // Display Toast 1
+      cheersMessage.innerText = TRANSLATIONS[currentLang].beerToasts.beer;
       cheersToast.style.display = 'flex';
-
-      // Activate next uncompleted step
-      const nextCard = document.querySelector(`.beer-card[data-step="${stepNum + 1}"]`);
-      if (nextCard && !completedSecretSteps.has(stepNum + 1)) {
-        nextCard.classList.add('active-step');
-      }
-
       triggerMiniConfetti();
 
-      // Check if all 3 steps completed!
-      if (completedSecretSteps.size >= 3) {
-        setTimeout(() => {
-          sounds.playFanfare();
-          triggerGoldConfetti();
-          if (secretCompleteCard) {
-            secretCompleteCard.classList.add('show');
-          }
-        }, 400);
+      // Unlock Step 2 with reveal animation
+      if (step2) {
+        step2.classList.remove('locked-step');
+        step2.classList.add('active-step', 'revealing');
+        const icon2 = document.getElementById('beerIcon2');
+        const title2 = document.getElementById('beerTitle2');
+        const desc2 = document.getElementById('beerDesc2');
+        if (icon2) icon2.innerText = '🎬';
+        if (title2) title2.innerText = TRANSLATIONS[currentLang].beer2Title;
+        if (desc2) desc2.innerText = TRANSLATIONS[currentLang].beer2Desc;
       }
     });
-  });
+  }
+
+  // Step 2 Click
+  if (step2) {
+    step2.addEventListener('click', () => {
+      if (!completedSecretSteps.has(1)) {
+        sounds.playPop();
+        cheersMessage.innerText = TRANSLATIONS[currentLang].stepLockedToast;
+        cheersToast.style.display = 'flex';
+        return;
+      }
+      if (completedSecretSteps.has(2)) return;
+
+      completedSecretSteps.add(2);
+      step2.classList.remove('active-step');
+      step2.classList.add('completed');
+      sounds.playChime();
+
+      // Display Toast 2
+      cheersMessage.innerText = TRANSLATIONS[currentLang].beerToasts.netflix;
+      cheersToast.style.display = 'flex';
+      triggerMiniConfetti();
+
+      // Unlock Step 3 with romantic reveal animation
+      if (step3) {
+        step3.classList.remove('locked-step');
+        step3.classList.add('active-step', 'revealing');
+        const icon3 = document.getElementById('beerIcon3');
+        const title3 = document.getElementById('beerTitle3');
+        const desc3 = document.getElementById('beerDesc3');
+        if (icon3) icon3.innerText = '🕯️';
+        if (title3) title3.innerText = TRANSLATIONS[currentLang].beer3Title;
+        if (desc3) desc3.innerText = TRANSLATIONS[currentLang].beer3Desc;
+      }
+    });
+  }
+
+  // Step 3 Click (Climax)
+  if (step3) {
+    step3.addEventListener('click', () => {
+      if (!completedSecretSteps.has(2)) {
+        sounds.playPop();
+        cheersMessage.innerText = TRANSLATIONS[currentLang].stepLockedToast;
+        cheersToast.style.display = 'flex';
+        return;
+      }
+      if (completedSecretSteps.has(3)) return;
+
+      completedSecretSteps.add(3);
+      step3.classList.remove('active-step');
+      step3.classList.add('completed');
+
+      // Display Toast 3
+      cheersMessage.innerText = TRANSLATIONS[currentLang].beerToasts.we_eat_us;
+      cheersToast.style.display = 'flex';
+
+      // Grand Climax Celebration!
+      setTimeout(() => {
+        sounds.playFanfare();
+        triggerGrandCelebration();
+        if (secretCompleteCard) {
+          secretCompleteCard.classList.add('show');
+        }
+      }, 300);
+    });
+  }
 }
 
 // Step Switching
@@ -671,9 +765,7 @@ function switchStep(fromId, toId) {
 
   if (toEl) {
     toEl.style.display = 'block';
-    setTimeout(() => {
-      toEl.classList.add('active');
-    }, 20);
+    toEl.classList.add('active');
   }
 
   window.scrollTo({ top: 0, behavior: 'smooth' });

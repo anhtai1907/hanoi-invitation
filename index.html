@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Gửi Em Yêu 🌸 | Một Điều Bất Ngờ Nhỏ</title>
+  
+  <!-- SEO & Social Sharing Meta Tags -->
+  <meta name="description" content="Một trang web nhỏ xinh gửi đến em để nạp năng lượng và rủ em đi chơi Hà Nội cùng anh!" />
+  <meta property="og:title" content="Gửi Em Yêu 🌸 | Có Một Điều Bất Ngờ Dành Cho Em" />
+  <meta property="og:description" content="Bấm vào đây để nhận vitamin nụ cười và một lời mời đặc biệt nhé!" />
+  <meta property="og:type" content="website" />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Nunito:wght@400;600;700;800;900&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet" />
+  
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Ambient Floating Background Elements -->
+  <div class="floating-bg" id="floatingBg"></div>
+
+  <!-- Top Utilities Bar -->
+  <header class="top-nav">
+    <div class="brand-badge">
+      <span class="pulse-dot"></span>
+      <span data-i18n="brand">Gửi riêng cho em 💌</span>
+    </div>
+    <div class="nav-actions">
+      <button class="icon-btn" id="soundToggle" title="Bật/Tắt âm thanh" aria-label="Toggle Sound">
+        <span id="soundIcon">🎵</span>
+      </button>
+      <button class="icon-btn lang-btn" id="langToggle" title="Chuyển ngôn ngữ" aria-label="Toggle Language">
+        <span id="langText">🇻🇳 VI</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Multi-Step Interactive Container -->
+  <main class="app-container">
+    
+    <!-- ============================================== -->
+    <!-- STEP 1: VIRTUAL CARE PACKAGE (CHEER-UP FIRST)  -->
+    <!-- ============================================== -->
+    <section class="card step-section active" id="step1">
+      <div class="card-glow"></div>
+      
+      <div class="header-mood">
+        <div class="mascot-wrapper">
+          <div class="mascot-avatar" id="mascotAvatar">🥺👉👈</div>
+          <div class="floating-hearts-avatar">💖✨</div>
+        </div>
+        <h1 class="main-title" data-i18n="step1Title">Nghe nói hôm nay em không được khỏe...</h1>
+        <p class="subtitle" data-i18n="step1Subtitle">
+          Đừng buồn nha, anh đã chuẩn bị sẵn một gói chăm sóc đặc biệt để nạp năng lượng cho em nè!
+        </p>
+      </div>
+
+      <!-- Battery / Health Meter -->
+      <div class="care-meter-container">
+        <div class="care-meter-header">
+          <span data-i18n="energyStatus">Thanh hồi máu cho em:</span>
+          <span class="energy-percent" id="energyPercent">25%</span>
+        </div>
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" id="progressBar"></div>
+        </div>
+      </div>
+
+      <!-- Interactive Care Items Grid -->
+      <div class="care-grid">
+        <!-- Item 1: Warm Tea -->
+        <div class="care-card" id="careTea" role="button" tabindex="0">
+          <div class="care-icon-badge">🍵</div>
+          <h3 data-i18n="careTeaTitle">Trà gừng mật ong</h3>
+          <p data-i18n="careTeaDesc">Bấm vào để uống một ngụm trà ấm bụng, xua tan mệt mỏi nha.</p>
+          <div class="click-feedback" data-i18n="clickedTea">Ấm áp quá nè +25% 💕</div>
+        </div>
+
+        <!-- Item 2: Giant Hug -->
+        <div class="care-card" id="careHug" role="button" tabindex="0">
+          <div class="care-icon-badge">🫂</div>
+          <h3 data-i18n="careHugTitle">Cái ôm 3000%</h3>
+          <p data-i18n="careHugDesc">Bấm vào để nhận một cái ôm thật chặt và ấm áp từ anh.</p>
+          <div class="click-feedback" data-i18n="clickedHug">Ôm chặt em nè +25% 💖</div>
+        </div>
+
+        <!-- Item 3: Smile Pills -->
+        <div class="care-card" id="carePill" role="button" tabindex="0">
+          <div class="care-icon-badge">💊</div>
+          <h3 data-i18n="carePillTitle">Vitamin Nụ Cười</h3>
+          <p data-i18n="carePillDesc">Bấm vào để bốc một liều khen thưởng siêu ngọt ngào!</p>
+          <div class="click-feedback" data-i18n="clickedPill">Bé ngoan chóng khỏe +25% ✨</div>
+        </div>
+
+        <!-- Item 4: Head Pat & Blanket -->
+        <div class="care-card" id="carePat" role="button" tabindex="0">
+          <div class="care-icon-badge">🧸</div>
+          <h3 data-i18n="carePatTitle">Xoa đầu & Đắp chăn</h3>
+          <p data-i18n="carePatDesc">Ngoan nào, mọi mệt mỏi để anh gánh bớt cho em nha.</p>
+          <div class="click-feedback" data-i18n="clickedPat">Thương em nhất trần đời +25% 🌸</div>
+        </div>
+      </div>
+
+      <!-- Pop-up Compliment Toast for Vitamin Pills -->
+      <div class="compliment-toast" id="complimentToast">
+        <span class="sparkle-icon">✨</span>
+        <span id="complimentText">Em là cô gái dễ thương và tuyệt vời nhất trần đời! 💖</span>
+      </div>
+
+      <!-- Next Step Trigger -->
+      <div class="action-footer">
+        <button class="btn btn-primary pulse-btn" id="toStep2Btn">
+          <span data-i18n="btnToStep2">Anh còn một bất ngờ này nữa cho em nè... ✨</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- STEP 2: THE BIG HANOI INVITATION & RUNAWAY NO  -->
+    <!-- ============================================== -->
+    <section class="card step-section" id="step2">
+      <div class="card-glow"></div>
+      
+      <div class="postcard-wrapper">
+        <div class="postcard-stamp">
+          <span>HÀ NỘI</span>
+          <span class="stamp-icon">🛵💨</span>
+        </div>
+        
+        <div class="invitation-header">
+          <div class="travel-badge" data-i18n="tripBadge">🇻🇳 CHUYẾN ĐI HẸN HÒ ĐẶC BIỆT 🇻🇳</div>
+          <h2 class="invite-title" data-i18n="inviteTitle">
+            Em có muốn cùng anh đi vi vu một chuyến Hà Nội thật tuyệt vời không?
+          </h2>
+          <p class="invite-sub" data-i18n="inviteSub">
+            Ăn phở nóng hổi lúc trời se lạnh, nhâm nhi cà phê trứng béo ngậy, dạo Hồ Gươm và để anh chở em ngắm hoàng hôn Hồ Tây... 🌇☕
+          </p>
+        </div>
+
+        <!-- Cute Interactive Hanoi Preview Badges -->
+        <div class="hanoi-tags">
+          <span class="tag-item">☕ Cà phê trứng Giảng</span>
+          <span class="tag-item">🥢 Phở Bát Đàn nóng hổi</span>
+          <span class="tag-item">🛵 Lượn gió Hồ Tây</span>
+          <span class="tag-item">🍦 Kem Tràng Tiền</span>
+          <span class="tag-item">📸 10,000 tấm ảnh siêu xinh</span>
+        </div>
+
+        <!-- Interactive Question Section with YES and RUNAWAY NO Button -->
+        <div class="question-box">
+          <p class="question-prompt" id="questionPrompt" data-i18n="questionPrompt">
+            Em chọn đi nàooo, không được từ chối đâu ó 🥺👇
+          </p>
+          
+          <div class="buttons-playground" id="buttonsPlayground">
+            <!-- YES BUTTON (Will grow when No is attempted) -->
+            <button class="btn btn-yes" id="yesBtn">
+              <span class="btn-emoji">💖</span>
+              <span class="btn-text" id="yesBtnText" data-i18n="yesBtnText">CÓ LIỀN LUÔN!</span>
+            </button>
+
+            <!-- IMPOSSIBLE RUNAWAY NO BUTTON -->
+            <button class="btn btn-no" id="noBtn">
+              <span class="no-emoji">🙅‍♀️</span>
+              <span id="noBtnText" data-i18n="noBtnText">Hông thèm</span>
+            </button>
+          </div>
+
+          <!-- Sneaky message helper below -->
+          <div class="dodge-counter-msg" id="dodgeMsg"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- STEP 3: CELEBRATION & OFFICIAL HANOI PASS     -->
+    <!-- ============================================== -->
+    <section class="card step-section" id="step3">
+      <div class="card-glow"></div>
+      
+      <div class="celebration-header">
+        <div class="celeb-avatar">🎉🥳🛵</div>
+        <h2 class="celeb-title" data-i18n="celebTitle">YAYYY! CHỐT KÈO ĐI HÀ NỘI NHA!</h2>
+        <p class="celeb-sub" data-i18n="celebSub">
+          Anh biết là em sẽ chọn CÓ mà! Mau hết ốm để chúng mình cùng đi quẩy nha em yêu 💖
+        </p>
+      </div>
+
+      <!-- Realistic Cute Airline Boarding Pass / Date Ticket -->
+      <div class="boarding-pass">
+        <div class="pass-top">
+          <div class="airline-name">
+            <span>✈️ LOVE AIRLINES</span>
+            <span class="flight-no">VN-HANOI-LOVE</span>
+          </div>
+          <div class="pass-status" data-i18n="confirmed">ĐÃ XÁC NHẬN ✅</div>
+        </div>
+
+        <div class="pass-body">
+          <div class="pass-row">
+            <div class="pass-col">
+              <span class="label" data-i18n="passengerLabel">Hành khách:</span>
+              <strong class="value highlight-name" id="passengerName" data-i18n="passengerName">Cô bé đáng yêu nhất vũ trụ 🌸</strong>
+            </div>
+            <div class="pass-col right">
+              <span class="label" data-i18n="driverLabel">Tài xế kiêm hướng dẫn viên:</span>
+              <strong class="value" data-i18n="driverName">Anh người yêu đẹp trai 🤵‍♂️</strong>
+            </div>
+          </div>
+
+          <div class="pass-route">
+            <div class="route-city">
+              <span class="airport-code">TRÁI TIM</span>
+              <span class="airport-name">Bình Yên</span>
+            </div>
+            <div class="flight-path">
+              <span class="plane-icon">✈️</span>
+              <div class="dotted-line"></div>
+            </div>
+            <div class="route-city">
+              <span class="airport-code">HÀ NỘI</span>
+              <span class="airport-name">Thủ Đô Yêu Thương</span>
+            </div>
+          </div>
+
+          <div class="pass-grid-info">
+            <div class="info-block">
+              <span class="label" data-i18n="seatLabel">Chỗ ngồi:</span>
+              <span class="val" data-i18n="seatVal">Ôm sau xe anh 🛵</span>
+            </div>
+            <div class="info-block">
+              <span class="label" data-i18n="dateLabel">Thời gian:</span>
+              <span class="val" data-i18n="dateVal">Chờ em khỏe lại 📅</span>
+            </div>
+            <div class="info-block">
+              <span class="label" data-i18n="benefitLabel">Đặc quyền:</span>
+              <span class="val" data-i18n="benefitVal">Ăn uống thả ga, chụp ảnh đẹp 📸</span>
+            </div>
+          </div>
+
+          <!-- Date Bucket List Checklist -->
+          <div class="bucket-list">
+            <div class="bucket-title" data-i18n="bucketTitle">📋 Danh sách việc nhất định phải làm cùng nhau:</div>
+            <ul class="checklist">
+              <li><input type="checkbox" checked disabled /> <span data-i18n="check1">Uống cà phê trứng ngắm phố cổ ☕</span></li>
+              <li><input type="checkbox" checked disabled /> <span data-i18n="check2">Lượn xe quanh Hồ Tây đón gió mát 🛵💨</span></li>
+              <li><input type="checkbox" checked disabled /> <span data-i18n="check3">Ăn phở đêm xì xụp ấm bụng 🥢</span></li>
+              <li><input type="checkbox" checked disabled /> <span data-i18n="check4">Ăn kem Tràng Tiền dạo Hồ Gươm 🍦</span></li>
+              <li><input type="checkbox" checked disabled /> <span data-i18n="check5">Chụp 10,000 bức ảnh sống ảo thật xinh 📸</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Barcode Decorative Section -->
+        <div class="pass-barcode">
+          <div class="barcode-lines"></div>
+          <div class="barcode-text">LOVE-YOU-TO-THE-MOON-AND-BACK-3000</div>
+        </div>
+      </div>
+
+      <!-- Action Share / Screenshot Prompt -->
+      <div class="final-actions">
+        <button class="btn btn-primary" id="replayBtn">
+          <span data-i18n="replayBtn">Chơi lại từ đầu 🔄</span>
+        </button>
+        <button class="btn btn-secondary" id="confettiMoreBtn">
+          <span data-i18n="confettiBtn">Thêm pháo hoa & tim 🎊💖</span>
+        </button>
+      </div>
+
+      <p class="love-footer" data-i18n="loveFooter">
+        Ngoan, uống thuốc rồi ngủ sớm cho mau khỏe nha công chúa của anh! Yêu em nhiều lắmmm 💕
+      </p>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

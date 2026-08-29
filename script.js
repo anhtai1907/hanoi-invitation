@@ -1,12 +1,12 @@
 /* ==========================================================================
    GỬI EM YÊU 🌸 - INTERACTIVE SCRIPTS
-   Runaway Button Physics, Care Package Energy, Audio Synth & Confetti
+   Runaway Physics, Natural Care Package, "We Eat Us" Secret Layer & Audio Synth
    ========================================================================== */
 
 // --- CONFIGURATION & CUSTOMIZATION ---
 const CONFIG = {
-  girlfriendNameVI: "Cô bé đáng yêu nhất vũ trụ 🌸",
-  girlfriendNameEN: "The Prettiest Girl in the World 🌸",
+  girlfriendNameVI: "Cô bé đáng yêu nhất 🌸",
+  girlfriendNameEN: "The Prettiest Girl 🌸",
   yourNameVI: "Anh người yêu đẹp trai 🤵‍♂️",
   yourNameEN: "Your Handsome Boyfriend 🤵‍♂️",
 };
@@ -15,9 +15,9 @@ const CONFIG = {
 const TRANSLATIONS = {
   vi: {
     brand: "Gửi riêng cho em 💌",
-    step1Title: "Nghe nói hôm nay em không được khỏe...",
-    step1Subtitle: "Đừng buồn nha, anh đã chuẩn bị sẵn một gói chăm sóc đặc biệt để nạp năng lượng cho em nè!",
-    energyStatus: "Thanh hồi máu cho em:",
+    step1Title: "Nghe nói hôm nay tâm trạng em không được tốt...",
+    step1Subtitle: "Đừng buồn nha, anh đã chuẩn bị sẵn một gói nạp năng lượng đặc biệt để xua tan mệt mỏi cho em nè!",
+    energyStatus: "Thanh nạp năng lượng:",
     careTeaTitle: "Trà gừng mật ong",
     careTeaDesc: "Bấm vào để uống một ngụm trà ấm bụng, xua tan mệt mỏi nha.",
     clickedTea: "Ấm áp quá nè +25% 💕",
@@ -26,39 +26,48 @@ const TRANSLATIONS = {
     clickedHug: "Ôm chặt em nè +25% 💖",
     carePillTitle: "Vitamin Nụ Cười",
     carePillDesc: "Bấm vào để bốc một liều khen thưởng siêu ngọt ngào!",
-    clickedPill: "Bé ngoan chóng khỏe +25% ✨",
+    clickedPill: "Vui vẻ trở lại nha +25% ✨",
     carePatTitle: "Xoa đầu & Đắp chăn",
-    carePatDesc: "Ngoan nào, mọi mệt mỏi để anh gánh bớt cho em nha.",
-    clickedPat: "Thương em nhất trần đời +25% 🌸",
+    carePatDesc: "Ngoan nào, mọi chuyện không vui để anh gánh bớt cho em nha.",
+    clickedPat: "Thương em nhiều +25% 🌸",
     btnToStep2: "Anh còn một bất ngờ này nữa cho em nè... ✨",
-    tripBadge: "🇻🇳 CHUYẾN ĐI HẸN HÒ ĐẶC BIỆT 🇻🇳",
-    inviteTitle: "Em có muốn cùng anh đi vi vu một chuyến Hà Nội thật tuyệt vời không?",
-    inviteSub: "Ăn phở nóng hổi lúc trời se lạnh, nhâm nhi cà phê trứng béo ngậy, dạo Hồ Gươm và để anh chở em ngắm hoàng hôn Hồ Tây... 🌇☕",
-    questionPrompt: "Em chọn đi nàooo, không được từ chối đâu ó 🥺👇",
+    tripBadge: "🇻🇳 HÀ NỘI MÙA THU CÙNG EM 🍂 🇻🇳",
+    inviteTitle: "Em có muốn cùng anh đi vi vu Hà Nội mùa thu này không?",
+    inviteSub: "Ăn phở nóng hổi lúc trời se lạnh, nhâm nhi cà phê trứng béo ngậy, dạo phố đi bộ Hồ Gươm và cùng nhau đi bộ ngắm hoàng hôn Hồ Tây... 🌇☕",
+    questionPrompt: "Em chọn đi nàooo, không được chọn Không đâu ó 😜👇",
     yesBtnText: "CÓ LIỀN LUÔN!",
     noBtnText: "Hông thèm",
     celebTitle: "YAYYY! CHỐT KÈO ĐI HÀ NỘI NHA!",
-    celebSub: "Anh biết là em sẽ chọn CÓ mà! Mau hết ốm để chúng mình cùng đi quẩy nha em yêu 💖",
+    celebSub: "Anh biết là em sẽ chọn CÓ mà! Mau lấy lại tinh thần để chuẩn bị đi chơi nhé 💖",
     confirmed: "ĐÃ XÁC NHẬN ✅",
     passengerLabel: "Hành khách:",
     passengerName: CONFIG.girlfriendNameVI,
-    driverLabel: "Tài xế kiêm hướng dẫn viên:",
-    driverName: CONFIG.yourNameVI,
-    seatLabel: "Chỗ ngồi:",
-    seatVal: "Ôm sau xe anh 🛵",
+    driverLabel: "Bạn đồng hành:",
+    driverName: "Anh người yêu 🤵‍♂️",
+    seatLabel: "Đồng hành:",
+    seatVal: "Bên cạnh anh 💕",
     dateLabel: "Thời gian:",
-    dateVal: "Chờ em khỏe lại 📅",
+    dateVal: "25 - 28/09 📅",
     benefitLabel: "Đặc quyền:",
-    benefitVal: "Ăn uống thả ga, chụp ảnh đẹp 📸",
+    benefitVal: "Ăn uống thả ga, chill & chụp ảnh đẹp 📸",
     bucketTitle: "📋 Danh sách việc nhất định phải làm cùng nhau:",
     check1: "Uống cà phê trứng ngắm phố cổ ☕",
-    check2: "Lượn xe quanh Hồ Tây đón gió mát 🛵💨",
+    check2: "Cùng nhau đi bộ dạo quanh Hồ Tây đón gió mát 🌇",
     check3: "Ăn phở đêm xì xụp ấm bụng 🥢",
-    check4: "Ăn kem Tràng Tiền dạo Hồ Gươm 🍦",
-    check5: "Chụp 10,000 bức ảnh sống ảo thật xinh 📸",
+    check4: "Ăn kem Tràng Tiền dạo phố đi bộ Hồ Gươm 🍦",
+    check5: "Chụp 10,000 bức ảnh thật xinh cho em 📸",
+    secretBtnText: "Mở khóa điều bí mật: \"WE EAT US\" 🌙🔓",
+    secretHeadline: "WE EAT US 🌙✨",
+    secretSub: "Không gian riêng của hai đứa: Netflix, vài lon bia mát lạnh, đồ ăn ngon và chúng mình.",
+    beer1Title: "Netflix & Cozy Bed",
+    beer1Desc: "Bật bộ phim yêu thích, cuộn tròn trong chăn ấm cùng nhau.",
+    beer2Title: "Vài lon bia mát lạnh",
+    beer2Desc: "Nhâm nhi lon bia, ăn snack và tâm sự thâu đêm.",
+    beer3Title: "...và rồi \"We eat us\"",
+    beer3Desc: "Không gian riêng tư, ngọt ngào chỉ thuộc về hai đứa mình.",
     replayBtn: "Chơi lại từ đầu 🔄",
     confettiBtn: "Thêm pháo hoa & tim 🎊💖",
-    loveFooter: "Ngoan, uống thuốc rồi ngủ sớm cho mau khỏe nha công chúa của anh! Yêu em nhiều lắmmm 💕",
+    loveFooter: "Hôm nay vất vả rồi, nghỉ ngơi cho thoải mái nha. Lúc nào anh cũng ở đây với em! ✨",
     dodgeMessages: [
       "Hông bấm được đâu lêu lêu 😜",
       "Nút này bị hỏng rùi hehe 🛠️",
@@ -69,61 +78,74 @@ const TRANSLATIONS = {
       "Năn nỉ bấm CÓ đi mà 🥺"
     ],
     compliments: [
-      "🌸 Em là cô gái xinh đẹp và đáng yêu nhất trần đời!",
-      "✨ Dù mệt mỏi thế nào thì nụ cười của em vẫn luôn tỏa nắng nhất!",
-      "💖 Có anh ở đây rồi, mọi chuyện cứ để anh lo nha!",
-      "🧸 Bé ngoan uống nhiều nước ấm và giữ ấm nhé!",
-      "🍯 Em là điều ngọt ngào nhất trong cuộc sống của anh!",
-      "🌟 Mong nụ cười sớm trở lại trên môi em bé xinh đẹp!",
-      "💌 Yêu em nhiều hơn ngày hôm qua và ít hơn ngày mai!"
-    ]
+      "🌸 Em luôn là cô gái đáng yêu và tuyệt vời nhất trong mắt anh!",
+      "✨ Hôm nay vất vả rồi, nghỉ ngơi cho thoải mái nha em!",
+      "💖 Có chuyện gì không vui cứ tâm sự với anh nhé!",
+      "🧸 Thở một hơi thật sâu và thả lỏng người ra nào!",
+      "🍯 Mong em sớm lấy lại nụ cười rạng rỡ nha!",
+      "🌟 Lúc nào anh cũng ở đây ủng hộ và đồng hành cùng em!"
+    ],
+    beerToasts: {
+      netflix: "Cuộn tròn xem phim cùng em là bình yên nhất! 🎬🍿",
+      beer: "Cụng lon bia mát lạnh! 🍺 Nhâm nhi và nói chuyện thâu đêm cùng em!",
+      we_eat_us: "Và rồi... chỉ có hai đứa mình ngọt ngào bên nhau! 🕯️✨"
+    }
   },
   en: {
     brand: "Made with love for you 💌",
-    step1Title: "I heard you're not feeling well today...",
-    step1Subtitle: "Don't worry my love, I've prepared a special virtual care package to boost your energy!",
-    energyStatus: "Your recovery energy bar:",
+    step1Title: "I heard your mood isn't great today...",
+    step1Subtitle: "Don't be sad, I've prepared a little energy recharge pack to help you unwind!",
+    energyStatus: "Recharging your energy bar:",
     careTeaTitle: "Warm Ginger Honey Tea",
-    careTeaDesc: "Click to take a sip of warm soothing tea to wash away the tiredness.",
+    careTeaDesc: "Click to take a sip of warm soothing tea to wash away the stress.",
     clickedTea: "So warm & cozy +25% 💕",
     careHugTitle: "Giant Warm Hug",
     careHugDesc: "Click to receive a super tight, warm embrace from me.",
     clickedHug: "Hugging you tight +25% 💖",
     carePillTitle: "Smile Vitamin Pills",
-    carePillDesc: "Click to get an instant dose of sweet affection and love!",
-    clickedPill: "Get well soon cutie +25% ✨",
+    carePillDesc: "Click to get an instant dose of sweet encouragement!",
+    clickedPill: "Bright smile back +25% ✨",
     carePatTitle: "Head Pat & Cozy Blanket",
-    carePatDesc: "Rest well, let me take care of all your worries.",
-    clickedPat: "Love you the most +25% 🌸",
+    carePatDesc: "Rest well, let me take care of your worries.",
+    clickedPat: "Always here for you +25% 🌸",
     btnToStep2: "I have a special surprise waiting for you... ✨",
-    tripBadge: "🇻🇳 SPECIAL ROMANTIC GETAWAY 🇻🇳",
-    inviteTitle: "Will you go on an unforgettable Hanoi trip adventure with me?",
-    inviteSub: "Cozy hot bowls of Pho, creamy authentic Egg Coffee, walking around Old Quarter, and chasing the West Lake sunset together on a scooter... 🌇☕",
-    questionPrompt: "Choose wisely, 'No' is not an option 🥺👇",
+    tripBadge: "🇻🇳 AUTUMN HANOI WITH YOU 🍂 🇻🇳",
+    inviteTitle: "Will you go on an autumn Hanoi trip with me?",
+    inviteSub: "Cozy hot bowls of Pho, creamy authentic Egg Coffee, walking along Old Quarter, and strolling around West Lake together at sunset... 🌇☕",
+    questionPrompt: "Choose wisely, 'No' is not an option 😜👇",
     yesBtnText: "YES OF COURSE!",
     noBtnText: "No thanks",
     celebTitle: "YAYYY! HANOI TRIP IS OFFICIAL!",
-    celebSub: "I knew you would say YES! Get well soon so we can explore together my love 💖",
+    celebSub: "I knew you would say YES! Recharge your energy and get ready to explore 💖",
     confirmed: "CONFIRMED ✅",
     passengerLabel: "Passenger:",
     passengerName: CONFIG.girlfriendNameEN,
-    driverLabel: "Driver & Personal Tour Guide:",
-    driverName: CONFIG.yourNameEN,
-    seatLabel: "Seat:",
-    seatVal: "Behind my scooter 🛵",
+    driverLabel: "Travel partner:",
+    driverName: "Your boyfriend 🤵‍♂️",
+    seatLabel: "Companion:",
+    seatVal: "Right beside me 💕",
     dateLabel: "Date:",
-    dateVal: "As soon as you feel well 📅",
+    dateVal: "25 - 28/09 📅",
     benefitLabel: "Perks:",
-    benefitVal: "Endless food dates & 10k photos 📸",
+    benefitVal: "Endless food dates, chill vibes & photos 📸",
     bucketTitle: "📋 Our Hanoi Bucket List:",
     check1: "Egg coffee in Hanoi Old Quarter ☕",
-    check2: "Scooter cruise along West Lake sunset 🛵💨",
+    check2: "Walking together around West Lake breeze 🌇",
     check3: "Late night hot Phở dates 🥢",
     check4: "Tràng Tiền Ice Cream walk by the lake 🍦",
     check5: "Take 10,000 aesthetic photos of you 📸",
+    secretBtnText: "Unlock Secret: \"WE EAT US\" 🌙🔓",
+    secretHeadline: "WE EAT US 🌙✨",
+    secretSub: "Our private space: Netflix, cold beers, good food and just us.",
+    beer1Title: "Netflix & Cozy Bed",
+    beer1Desc: "Favorite movie, cuddling under warm blankets together.",
+    beer2Title: "Cold beers & talks",
+    beer2Desc: "Sipping cold beers, snacking and talking all night.",
+    beer3Title: "...and then \"We eat us\"",
+    beer3Desc: "Intimate, sweet private space belonging just to us.",
     replayBtn: "Play again 🔄",
     confettiBtn: "More fireworks & hearts 🎊💖",
-    loveFooter: "Take your medicine and sleep early to recover soon my princess! Love you so much 💕",
+    loveFooter: "You've worked hard today, rest up and relax. I'm always right here with you! ✨",
     dodgeMessages: [
       "Too slow! Nice try 😜",
       "This button is broken hehe 🛠️",
@@ -134,14 +156,19 @@ const TRANSLATIONS = {
       "Please say YES 🥺"
     ],
     compliments: [
-      "🌸 You are the prettiest and sweetest girl in the universe!",
-      "✨ Your smile always brightens up my whole world!",
-      "💖 I'm always right here with you, don't worry about anything!",
-      "🧸 Drink plenty of warm water and stay cozy!",
-      "🍯 You are the sweetest blessing in my life!",
-      "🌟 Can't wait to see your radiant smile again soon!",
-      "💌 I love you more and more every single day!"
-    ]
+      "🌸 You are always the prettiest and most wonderful person in my heart!",
+      "✨ Let all the stress and worries fly away with the wind today!",
+      "💖 I'm always right here by your side, loving you endlessly!",
+      "🧸 Take a rest, breathe deep, and relax sweetie!",
+      "🍯 Seeing you smile is the happiest thing in my world!",
+      "🌟 Your smile is my biggest source of positive energy!",
+      "💌 Love you so much, always and forever!"
+    ],
+    beerToasts: {
+      netflix: "Cuddling and watching movies together is pure peace! 🎬🍿",
+      beer: "Clinking cold beers! 🍺 Cozy snacks and late-night heart-to-heart talks!",
+      we_eat_us: "And then... just the two of us, sweet and close! 🕯️💖"
+    }
   }
 };
 
@@ -151,7 +178,7 @@ let energy = 25;
 let dodgeCount = 0;
 let soundEnabled = true;
 
-// Web Audio API Synthesizer (Zero External Dependencies)
+// Web Audio API Synthesizer
 class SoundSynth {
   constructor() {
     this.ctx = null;
@@ -262,12 +289,34 @@ class SoundSynth {
     osc.start(now);
     osc.stop(now + 0.1);
   }
+
+  playCheers() {
+    if (!soundEnabled) return;
+    this.init();
+    const now = this.ctx.currentTime;
+    // Two high resonant crystal tones to mimic clinking glasses
+    [2093.0, 2793.8].forEach((freq, i) => {
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, now + i * 0.02);
+
+      gain.gain.setValueAtTime(0.25, now + i * 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
+
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+
+      osc.start(now + i * 0.02);
+      osc.stop(now + 0.5);
+    });
+  }
 }
 
 const sounds = new SoundSynth();
 
 // ==========================================================================
-// DOM ELEMENTS & EVENT BINDINGS
+// DOM INITIALIZATION
 // ==========================================================================
 document.addEventListener('DOMContentLoaded', () => {
   initFloatingBackground();
@@ -276,14 +325,15 @@ document.addEventListener('DOMContentLoaded', () => {
   initStep1CarePackage();
   initStep2RunawayNo();
   initStep3Celebration();
+  initSecretLayer();
 });
 
-// 1. Ambient Floating Hearts / Sparkles Background
+// 1. Ambient Floating Background
 function initFloatingBackground() {
   const container = document.getElementById('floatingBg');
-  const symbols = ['💖', '✨', '🌸', '🍵', '☕', '🛵', '🧸', '💕', '⭐'];
+  const symbols = ['💖', '✨', '🌸', '🍵', '☕', '🛵', '🧸', '💕', '⭐', '🍻'];
 
-  for (let i = 0; i < 18; i++) {
+  for (let i = 0; i < 20; i++) {
     const el = document.createElement('div');
     el.className = 'floating-item';
     el.innerText = symbols[Math.floor(Math.random() * symbols.length)];
@@ -333,7 +383,7 @@ function initSoundToggle() {
   });
 }
 
-// 4. STEP 1: CARE PACKAGE INTERACTIONS
+// 4. STEP 1: CARE PACKAGE
 function initStep1CarePackage() {
   const careCards = [
     { id: 'careTea', emoji: '🍵' },
@@ -354,30 +404,25 @@ function initStep1CarePackage() {
     el.addEventListener('click', () => {
       sounds.playChime();
       
-      // Visual feedback popup
       const feedback = el.querySelector('.click-feedback');
       if (feedback) {
         feedback.classList.add('show');
         setTimeout(() => feedback.classList.remove('show'), 1500);
       }
 
-      // Mark claimed
       el.classList.add('claimed');
 
-      // Increase energy
       if (energy < 100) {
         energy = Math.min(100, energy + 25);
         updateEnergyBar();
       }
 
-      // Dynamic Mascot Reactions
       if (item.id === 'careTea') {
         mascotAvatar.innerText = '☕🥰';
       } else if (item.id === 'careHug') {
         mascotAvatar.innerText = '🤗💖';
       } else if (item.id === 'carePill') {
         mascotAvatar.innerText = '🤩✨';
-        // Random compliment
         const pool = TRANSLATIONS[currentLang].compliments;
         const randomCompliment = pool[Math.floor(Math.random() * pool.length)];
         complimentText.innerText = randomCompliment;
@@ -406,7 +451,7 @@ function updateEnergyBar() {
   energyPercent.innerText = `${energy}%`;
 }
 
-// 5. STEP 2: THE RUNAWAY "NO" BUTTON (IMPOSSIBLE TO CLICK)
+// 5. STEP 2: RUNAWAY "NO" BUTTON
 function initStep2RunawayNo() {
   const noBtn = document.getElementById('noBtn');
   const noBtnText = document.getElementById('noBtnText');
@@ -414,7 +459,6 @@ function initStep2RunawayNo() {
   const dodgeMsg = document.getElementById('dodgeMsg');
   const playground = document.getElementById('buttonsPlayground');
 
-  // Dodge Logic
   function escapeButton(e) {
     if (e) {
       e.preventDefault();
@@ -424,41 +468,33 @@ function initStep2RunawayNo() {
     sounds.playWhoosh();
     dodgeCount++;
 
-    // Calculate safe boundary inside playground or window
     const rect = playground.getBoundingClientRect();
     const btnWidth = noBtn.offsetWidth || 100;
     const btnHeight = noBtn.offsetHeight || 44;
 
-    // Range of motion within the playground / card
     const maxX = Math.max(20, rect.width - btnWidth - 20);
     const maxY = Math.max(20, rect.height - btnHeight - 10);
 
-    // Generate random positions
     let randX = Math.floor(Math.random() * maxX) - (rect.width / 2 - btnWidth / 2);
     let randY = Math.floor(Math.random() * maxY) - (rect.height / 2 - btnHeight / 2);
 
-    // Keep within reasonable limits
     randX = Math.max(-130, Math.min(130, randX));
     randY = Math.max(-60, Math.min(60, randY));
 
-    // Ensure it noticeably moves away
     if (Math.abs(randX) < 40) randX = randX < 0 ? -70 : 70;
     if (Math.abs(randY) < 30) randY = randY < 0 ? -50 : 50;
 
     noBtn.style.position = 'relative';
     noBtn.style.transform = `translate(${randX}px, ${randY}px)`;
 
-    // YES button gets bigger!
     const newScale = Math.min(1 + dodgeCount * 0.14, 1.8);
     yesBtn.style.transform = `scale(${newScale})`;
 
-    // Funny messages
     const msgs = TRANSLATIONS[currentLang].dodgeMessages;
     const randMsg = msgs[dodgeCount % msgs.length];
     dodgeMsg.innerText = randMsg;
     dodgeMsg.style.opacity = '1';
 
-    // No button text changes playfully
     if (dodgeCount > 1) {
       const funnyNoTexts = currentLang === 'vi' 
         ? ["Hỏng rùi 😜", "Trượt òi 💨", "Không được!", "Bấm CÓ đi 💖", "Lêu lêu 🏃‍♂️"]
@@ -467,11 +503,9 @@ function initStep2RunawayNo() {
     }
   }
 
-  // Desktop Hover & Proximity Detection
   noBtn.addEventListener('mouseenter', escapeButton);
   noBtn.addEventListener('mouseover', escapeButton);
 
-  // Proximity trigger on container mousemove
   playground.addEventListener('mousemove', (e) => {
     const noRect = noBtn.getBoundingClientRect();
     const mouseX = e.clientX;
@@ -486,7 +520,6 @@ function initStep2RunawayNo() {
     }
   });
 
-  // Mobile Touch Events (Teleport before click can register)
   noBtn.addEventListener('touchstart', (e) => {
     escapeButton(e);
   }, { passive: false });
@@ -495,7 +528,6 @@ function initStep2RunawayNo() {
     escapeButton(e);
   });
 
-  // Click on YES Button -> Triumph!
   yesBtn.addEventListener('click', () => {
     sounds.playFanfare();
     triggerGrandCelebration();
@@ -510,7 +542,6 @@ function initStep3Celebration() {
 
   replayBtn.addEventListener('click', () => {
     sounds.playPop();
-    // Reset state
     energy = 25;
     dodgeCount = 0;
     updateEnergyBar();
@@ -528,6 +559,10 @@ function initStep3Celebration() {
     const dodgeMsg = document.getElementById('dodgeMsg');
     if (dodgeMsg) dodgeMsg.innerText = '';
 
+    // Hide secret layer if opened
+    const secretLayer = document.getElementById('secretLayer');
+    if (secretLayer) secretLayer.classList.remove('show');
+
     switchStep('step3', 'step1');
   });
 
@@ -537,7 +572,43 @@ function initStep3Celebration() {
   });
 }
 
-// Switch between screens smoothly
+// 7. SECRET LAYER: "WE EAT US" & BEER SELECTION
+function initSecretLayer() {
+  const unlockBtn = document.getElementById('secretUnlockBtn');
+  const secretLayer = document.getElementById('secretLayer');
+  const beerCards = document.querySelectorAll('.beer-card');
+  const cheersToast = document.getElementById('cheersToast');
+  const cheersMessage = document.getElementById('cheersMessage');
+
+  unlockBtn.addEventListener('click', () => {
+    sounds.playCheers();
+    secretLayer.classList.toggle('show');
+    
+    if (secretLayer.classList.contains('show')) {
+      triggerGoldConfetti();
+      secretLayer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+
+  beerCards.forEach(card => {
+    card.addEventListener('click', () => {
+      sounds.playCheers();
+      
+      beerCards.forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+
+      const beerType = card.getAttribute('data-beer');
+      const toastText = TRANSLATIONS[currentLang].beerToasts[beerType] || "Chạm ly cái nè! 🍻";
+
+      cheersMessage.innerText = toastText;
+      cheersToast.style.display = 'flex';
+
+      triggerMiniConfetti();
+    });
+  });
+}
+
+// Step Switching
 function switchStep(fromId, toId) {
   const fromEl = document.getElementById(fromId);
   const toEl = document.getElementById(toId);
@@ -549,7 +620,6 @@ function switchStep(fromId, toId) {
 
   if (toEl) {
     toEl.style.display = 'block';
-    // Small delay for CSS animation
     setTimeout(() => {
       toEl.classList.add('active');
     }, 20);
@@ -570,9 +640,19 @@ function triggerMiniConfetti() {
   }
 }
 
+function triggerGoldConfetti() {
+  if (typeof confetti === 'function') {
+    confetti({
+      particleCount: 60,
+      spread: 70,
+      origin: { y: 0.6 },
+      colors: ['#ffd32a', '#ffa502', '#ff6348', '#ff4757']
+    });
+  }
+}
+
 function triggerGrandCelebration() {
   if (typeof confetti === 'function') {
-    // 1. Center burst
     confetti({
       particleCount: 100,
       spread: 80,
@@ -580,7 +660,6 @@ function triggerGrandCelebration() {
       colors: ['#ff4757', '#ff758c', '#ffa502', '#2ed573', '#7452ff']
     });
 
-    // 2. Left and right cannons
     setTimeout(() => {
       confetti({
         particleCount: 60,
@@ -596,7 +675,6 @@ function triggerGrandCelebration() {
       });
     }, 250);
 
-    // 3. Heart shower
     setTimeout(() => {
       confetti({
         particleCount: 40,

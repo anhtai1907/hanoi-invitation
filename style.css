@@ -1,6 +1,6 @@
 /* ==========================================================================
    GỬI EM YÊU 🌸 - STYLESHEET
-   Aesthetic Pastel Romantic & Cheering Theme
+   Aesthetic Pastel Romantic & Cheering Theme + "We eat us" Secret Layer
    ========================================================================== */
 
 :root {
@@ -15,6 +15,7 @@
   --accent-pink: #ff758c;
   --accent-rose: #ff7eb3;
   --accent-purple: #7452ff;
+  --accent-amber: #e67e22;
   
   --bg-gradient: linear-gradient(135deg, #fff0f3 0%, #ffe3e8 40%, #fff6e5 100%);
   --card-bg: rgba(255, 255, 255, 0.88);
@@ -27,6 +28,7 @@
   
   --font-main: 'Nunito', 'Quicksand', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-hand: 'Caveat', cursive;
+  --font-title: 'Space Grotesk', 'Nunito', sans-serif;
   
   --radius-lg: 24px;
   --radius-md: 16px;
@@ -62,9 +64,7 @@ body {
   min-height: 100vh;
 }
 
-/* ==========================================================================
-   AMBIENT FLOATING BACKGROUND ELEMENTS
-   ========================================================================== */
+/* Ambient Floating Background */
 .floating-bg {
   position: fixed;
   top: 0;
@@ -101,9 +101,7 @@ body {
   }
 }
 
-/* ==========================================================================
-   TOP NAVIGATION
-   ========================================================================== */
+/* Top Navigation */
 .top-nav {
   position: relative;
   z-index: 10;
@@ -188,9 +186,7 @@ body {
   padding: 6px 10px;
 }
 
-/* ==========================================================================
-   APP CONTAINER & MAIN CARDS
-   ========================================================================== */
+/* App Container & Cards */
 .app-container {
   position: relative;
   z-index: 5;
@@ -222,7 +218,7 @@ body {
   pointer-events: none;
 }
 
-/* Step Switching Visibility */
+/* Step Visibility */
 .step-section {
   display: none;
   opacity: 0;
@@ -288,7 +284,7 @@ body {
 }
 
 .main-title {
-  font-size: 1.45rem;
+  font-size: 1.4rem;
   font-weight: 800;
   color: #2c3e50;
   margin-bottom: 8px;
@@ -455,9 +451,7 @@ body {
   font-size: 1.2rem;
 }
 
-/* ==========================================================================
-   BUTTONS & COMMON ACTIONS
-   ========================================================================== */
+/* Common Buttons */
 .action-footer {
   text-align: center;
   margin-top: 10px;
@@ -527,7 +521,7 @@ body {
 }
 
 /* ==========================================================================
-   STEP 2: POSTCARD & THE RUNAWAY BUTTON
+   STEP 2: POSTCARD & RUNAWAY BUTTON
    ========================================================================== */
 .postcard-wrapper {
   position: relative;
@@ -549,6 +543,13 @@ body {
   align-items: center;
   transform: rotate(6deg);
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
+}
+
+.stamp-date {
+  font-size: 0.7rem;
+  color: var(--primary);
+  font-weight: 900;
+  margin: 1px 0;
 }
 
 .stamp-icon {
@@ -602,7 +603,27 @@ body {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
 }
 
-/* Question Box & Runaway Button Playground */
+.tag-highlight {
+  background: linear-gradient(135deg, #fff0f3, #ffe3e8);
+  border-color: var(--primary);
+  color: var(--primary);
+  font-weight: 800;
+  box-shadow: 0 2px 8px rgba(255, 71, 87, 0.15);
+}
+
+.highlight-date-box {
+  background: #fff0f3;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px dashed var(--primary);
+}
+
+.highlight-date {
+  color: var(--primary) !important;
+  font-weight: 900 !important;
+}
+
+/* Question Box & Playground */
 .question-box {
   background: linear-gradient(135deg, #fff5f7, #ffffff);
   border: 2px dashed rgba(255, 107, 129, 0.4);
@@ -637,7 +658,6 @@ body {
   gap: 20px;
 }
 
-/* YES Button */
 .btn-yes {
   background: linear-gradient(135deg, #2ed573, #10ac84);
   color: #ffffff;
@@ -660,7 +680,6 @@ body {
   transform: scale(0.96);
 }
 
-/* NO Button (Runaway target) */
 .btn-no {
   background: #f1f2f6;
   color: #747d8c;
@@ -730,7 +749,7 @@ body {
   border: 1.5px solid #ffccd5;
   box-shadow: 0 15px 35px rgba(255, 71, 87, 0.12);
   overflow: hidden;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   position: relative;
 }
 
@@ -795,7 +814,6 @@ body {
   color: var(--primary) !important;
 }
 
-/* Route display */
 .pass-route {
   display: flex;
   align-items: center;
@@ -848,7 +866,6 @@ body {
   z-index: 1;
 }
 
-/* Info Grid */
 .pass-grid-info {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -877,7 +894,6 @@ body {
   color: #2f3542;
 }
 
-/* Checklist Bucket List */
 .bucket-list {
   background: #fdfaf6;
   border-radius: var(--radius-sm);
@@ -914,7 +930,6 @@ body {
   height: 15px;
 }
 
-/* Barcode */
 .pass-barcode {
   background: #fbfbfb;
   border-top: 1px dashed #dcdde1;
@@ -950,6 +965,232 @@ body {
   color: var(--text-muted);
 }
 
+/* ==========================================================================
+   SECRET LAYER: "WE EAT US" & BEER SECTION
+   ========================================================================== */
+.secret-trigger-wrapper {
+  margin-bottom: 22px;
+  text-align: center;
+}
+
+.btn-secret-unlock {
+  background: linear-gradient(135deg, #ffa502, #ff6348);
+  color: #ffffff;
+  border: none;
+  padding: 13px 22px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-main);
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(255, 165, 2, 0.35);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: pulseGold 2.2s infinite;
+}
+
+@keyframes pulseGold {
+  0% { box-shadow: 0 0 0 0 rgba(255, 165, 2, 0.5); }
+  70% { box-shadow: 0 0 0 12px rgba(255, 165, 2, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 165, 2, 0); }
+}
+
+.btn-secret-unlock:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(255, 99, 72, 0.45);
+}
+
+.secret-pulse-icon {
+  font-size: 1.2rem;
+  animation: spinSlow 4s linear infinite;
+}
+
+@keyframes spinSlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Hidden Secret Layer Card */
+.secret-layer-card {
+  display: none;
+  background: linear-gradient(145deg, #2d3436 0%, #1e272e 100%);
+  border: 1.5px solid rgba(255, 215, 0, 0.35);
+  border-radius: var(--radius-md);
+  padding: 22px 18px;
+  color: #ffffff;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35), 0 0 25px rgba(255, 165, 2, 0.15);
+  margin-bottom: 24px;
+  opacity: 0;
+  transform: translateY(15px) scale(0.97);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.secret-layer-card.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.secret-header {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.secret-neon-tag {
+  display: inline-block;
+  background: rgba(255, 165, 2, 0.18);
+  color: #ffa502;
+  border: 1px solid #ffa502;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.secret-headline {
+  font-family: var(--font-title);
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  background: linear-gradient(135deg, #ffd32a, #ff9f1a, #ff4757);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 6px;
+  text-shadow: 0 0 20px rgba(255, 165, 2, 0.3);
+}
+
+.secret-sub {
+  font-size: 0.88rem;
+  color: #d2dae2;
+  line-height: 1.45;
+}
+
+/* Beer Selection Grid */
+.beer-section {
+  margin-top: 16px;
+}
+
+.beer-heading {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #ffd32a;
+  margin-bottom: 12px;
+}
+
+.beer-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.beer-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  user-select: none;
+  position: relative;
+}
+
+.beer-card:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #ffa502;
+  transform: translateX(4px);
+}
+
+.beer-card.selected {
+  background: rgba(255, 165, 2, 0.18);
+  border-color: #ffd32a;
+  box-shadow: 0 0 15px rgba(255, 165, 2, 0.25);
+}
+
+.beer-icon {
+  font-size: 1.8rem;
+  flex-shrink: 0;
+}
+
+.beer-info {
+  flex: 1;
+}
+
+.beer-info h5 {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 2px;
+}
+
+.beer-info p {
+  font-size: 0.75rem;
+  color: #a4b0be;
+  line-height: 1.35;
+}
+
+.beer-check {
+  font-size: 0.85rem;
+  font-weight: 900;
+  color: #2ed573;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.beer-card.selected .beer-check {
+  opacity: 1;
+  transform: scale(1);
+  border-color: #2ed573;
+  background: rgba(46, 213, 115, 0.2);
+}
+
+/* Cheers Toast */
+.cheers-toast {
+  background: rgba(255, 211, 42, 0.15);
+  border: 1px dashed #ffd32a;
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #ffd32a;
+  margin-bottom: 16px;
+  display: none;
+  align-items: center;
+  gap: 8px;
+  animation: clinkBounce 0.5s ease;
+}
+
+@keyframes clinkBounce {
+  0% { transform: scale(0.9); opacity: 0; }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.clink-anim {
+  font-size: 1.2rem;
+  animation: clinkRotate 0.6s ease infinite alternate;
+}
+
+@keyframes clinkRotate {
+  0% { transform: rotate(-10deg); }
+  100% { transform: rotate(10deg); }
+}
+
 /* Final actions */
 .final-actions {
   display: flex;
@@ -971,9 +1212,7 @@ body {
   padding: 0 10px;
 }
 
-/* ==========================================================================
-   RESPONSIVE DESIGN (MOBILE OPTIMIZATION)
-   ========================================================================== */
+/* Responsive Tweaks */
 @media (max-width: 480px) {
   body {
     padding: 10px 8px;

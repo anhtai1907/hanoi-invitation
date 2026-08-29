@@ -14,7 +14,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Nunito:wght@400;600;700;800;900&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Nunito:wght@400;600;700;800;900&family=Quicksand:wght@500;600;700&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet" />
   
   <!-- Canvas Confetti CDN -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
@@ -55,16 +55,16 @@
           <div class="mascot-avatar" id="mascotAvatar">🥺👉👈</div>
           <div class="floating-hearts-avatar">💖✨</div>
         </div>
-        <h1 class="main-title" data-i18n="step1Title">Nghe nói hôm nay em không được khỏe...</h1>
+        <h1 class="main-title" data-i18n="step1Title">Nghe nói hôm nay tâm trạng em không được tốt...</h1>
         <p class="subtitle" data-i18n="step1Subtitle">
-          Đừng buồn nha, anh đã chuẩn bị sẵn một gói chăm sóc đặc biệt để nạp năng lượng cho em nè!
+          Đừng buồn nha, anh đã chuẩn bị sẵn một gói nạp năng lượng đặc biệt để xua tan mệt mỏi cho em nè!
         </p>
       </div>
 
       <!-- Battery / Health Meter -->
       <div class="care-meter-container">
         <div class="care-meter-header">
-          <span data-i18n="energyStatus">Thanh hồi máu cho em:</span>
+          <span data-i18n="energyStatus">Thanh nạp năng lượng:</span>
           <span class="energy-percent" id="energyPercent">25%</span>
         </div>
         <div class="progress-bar-track">
@@ -95,22 +95,22 @@
           <div class="care-icon-badge">💊</div>
           <h3 data-i18n="carePillTitle">Vitamin Nụ Cười</h3>
           <p data-i18n="carePillDesc">Bấm vào để bốc một liều khen thưởng siêu ngọt ngào!</p>
-          <div class="click-feedback" data-i18n="clickedPill">Bé ngoan chóng khỏe +25% ✨</div>
+          <div class="click-feedback" data-i18n="clickedPill">Vui vẻ trở lại nha +25% ✨</div>
         </div>
 
         <!-- Item 4: Head Pat & Blanket -->
         <div class="care-card" id="carePat" role="button" tabindex="0">
           <div class="care-icon-badge">🧸</div>
           <h3 data-i18n="carePatTitle">Xoa đầu & Đắp chăn</h3>
-          <p data-i18n="carePatDesc">Ngoan nào, mọi mệt mỏi để anh gánh bớt cho em nha.</p>
-          <div class="click-feedback" data-i18n="clickedPat">Thương em nhất trần đời +25% 🌸</div>
+          <p data-i18n="carePatDesc">Ngoan nào, mọi chuyện không vui để anh gánh bớt cho em nha.</p>
+          <div class="click-feedback" data-i18n="clickedPat">Thương em nhiều lắm +25% 🌸</div>
         </div>
       </div>
 
       <!-- Pop-up Compliment Toast for Vitamin Pills -->
       <div class="compliment-toast" id="complimentToast">
         <span class="sparkle-icon">✨</span>
-        <span id="complimentText">Em là cô gái dễ thương và tuyệt vời nhất trần đời! 💖</span>
+        <span id="complimentText">Em là cô gái dễ thương và đáng yêu nhất! 💖</span>
       </div>
 
       <!-- Next Step Trigger -->
@@ -130,16 +130,17 @@
       <div class="postcard-wrapper">
         <div class="postcard-stamp">
           <span>HÀ NỘI</span>
-          <span class="stamp-icon">🛵💨</span>
+          <span class="stamp-date">25-28/09</span>
+          <span class="stamp-icon">📮</span>
         </div>
         
         <div class="invitation-header">
-          <div class="travel-badge" data-i18n="tripBadge">🇻🇳 CHUYẾN ĐI HẸN HÒ ĐẶC BIỆT 🇻🇳</div>
+          <div class="travel-badge" data-i18n="tripBadge">🇻🇳 HÀ NỘI MÙA THU CÙNG EM 🍂 🇻🇳</div>
           <h2 class="invite-title" data-i18n="inviteTitle">
-            Em có muốn cùng anh đi vi vu một chuyến Hà Nội thật tuyệt vời không?
+            Em có muốn cùng anh đi vi vu Hà Nội mùa thu này không?
           </h2>
           <p class="invite-sub" data-i18n="inviteSub">
-            Ăn phở nóng hổi lúc trời se lạnh, nhâm nhi cà phê trứng béo ngậy, dạo Hồ Gươm và để anh chở em ngắm hoàng hôn Hồ Tây... 🌇☕
+            Ăn phở nóng hổi lúc trời se lạnh, nhâm nhi cà phê trứng béo ngậy, dạo phố đi bộ Hồ Gươm và cùng nhau đi bộ ngắm hoàng hôn Hồ Tây... 🌇☕
           </p>
         </div>
 
@@ -147,7 +148,7 @@
         <div class="hanoi-tags">
           <span class="tag-item">☕ Cà phê trứng Giảng</span>
           <span class="tag-item">🥢 Phở Bát Đàn nóng hổi</span>
-          <span class="tag-item">🛵 Lượn gió Hồ Tây</span>
+          <span class="tag-item">🚶‍♀️ Đi bộ ngắm Hồ Tây</span>
           <span class="tag-item">🍦 Kem Tràng Tiền</span>
           <span class="tag-item">📸 10,000 tấm ảnh siêu xinh</span>
         </div>
@@ -155,7 +156,7 @@
         <!-- Interactive Question Section with YES and RUNAWAY NO Button -->
         <div class="question-box">
           <p class="question-prompt" id="questionPrompt" data-i18n="questionPrompt">
-            Em chọn đi nàooo, không được từ chối đâu ó 🥺👇
+            Em chọn đi nàooo, không được chọn Không đâu ó 😜👇
           </p>
           
           <div class="buttons-playground" id="buttonsPlayground">
@@ -188,7 +189,7 @@
         <div class="celeb-avatar">🎉🥳🛵</div>
         <h2 class="celeb-title" data-i18n="celebTitle">YAYYY! CHỐT KÈO ĐI HÀ NỘI NHA!</h2>
         <p class="celeb-sub" data-i18n="celebSub">
-          Anh biết là em sẽ chọn CÓ mà! Mau hết ốm để chúng mình cùng đi quẩy nha em yêu 💖
+          Anh biết là em sẽ chọn CÓ mà! Mau lấy lại tinh thần để chuẩn bị đi chơi nhá em iu 💖
         </p>
       </div>
 
@@ -206,10 +207,10 @@
           <div class="pass-row">
             <div class="pass-col">
               <span class="label" data-i18n="passengerLabel">Hành khách:</span>
-              <strong class="value highlight-name" id="passengerName" data-i18n="passengerName">Cô bé đáng yêu nhất vũ trụ 🌸</strong>
+              <strong class="value highlight-name" id="passengerName" data-i18n="passengerName">Cô bé đáng yêu nhất 🌸</strong>
             </div>
             <div class="pass-col right">
-              <span class="label" data-i18n="driverLabel">Tài xế kiêm hướng dẫn viên:</span>
+              <span class="label" data-i18n="driverLabel">Bạn đồng hành:</span>
               <strong class="value" data-i18n="driverName">Anh người yêu đẹp trai 🤵‍♂️</strong>
             </div>
           </div>
@@ -231,16 +232,16 @@
 
           <div class="pass-grid-info">
             <div class="info-block">
-              <span class="label" data-i18n="seatLabel">Chỗ ngồi:</span>
-              <span class="val" data-i18n="seatVal">Ôm sau xe anh 🛵</span>
+              <span class="label" data-i18n="seatLabel">Đồng hành:</span>
+              <span class="val" data-i18n="seatVal">Bên cạnh anh 💕</span>
             </div>
-            <div class="info-block">
+            <div class="info-block highlight-date-box">
               <span class="label" data-i18n="dateLabel">Thời gian:</span>
-              <span class="val" data-i18n="dateVal">Chờ em khỏe lại 📅</span>
+              <strong class="val highlight-date" data-i18n="dateVal">25 - 28/09 📅</strong>
             </div>
             <div class="info-block">
               <span class="label" data-i18n="benefitLabel">Đặc quyền:</span>
-              <span class="val" data-i18n="benefitVal">Ăn uống thả ga, chụp ảnh đẹp 📸</span>
+              <span class="val" data-i18n="benefitVal">Ăn uống thả ga, chill & chụp ảnh đẹp 📸</span>
             </div>
           </div>
 
@@ -249,10 +250,10 @@
             <div class="bucket-title" data-i18n="bucketTitle">📋 Danh sách việc nhất định phải làm cùng nhau:</div>
             <ul class="checklist">
               <li><input type="checkbox" checked disabled /> <span data-i18n="check1">Uống cà phê trứng ngắm phố cổ ☕</span></li>
-              <li><input type="checkbox" checked disabled /> <span data-i18n="check2">Lượn xe quanh Hồ Tây đón gió mát 🛵💨</span></li>
+              <li><input type="checkbox" checked disabled /> <span data-i18n="check2">Cùng nhau đi bộ dạo quanh Hồ Tây đón gió mát 🌇</span></li>
               <li><input type="checkbox" checked disabled /> <span data-i18n="check3">Ăn phở đêm xì xụp ấm bụng 🥢</span></li>
-              <li><input type="checkbox" checked disabled /> <span data-i18n="check4">Ăn kem Tràng Tiền dạo Hồ Gươm 🍦</span></li>
-              <li><input type="checkbox" checked disabled /> <span data-i18n="check5">Chụp 10,000 bức ảnh sống ảo thật xinh 📸</span></li>
+              <li><input type="checkbox" checked disabled /> <span data-i18n="check4">Ăn kem Tràng Tiền dạo phố đi bộ Hồ Gươm 🍦</span></li>
+              <li><input type="checkbox" checked disabled /> <span data-i18n="check5">Chụp 10,000 bức ảnh thật xinh cho em 📸</span></li>
             </ul>
           </div>
         </div>
@@ -261,6 +262,68 @@
         <div class="pass-barcode">
           <div class="barcode-lines"></div>
           <div class="barcode-text">LOVE-YOU-TO-THE-MOON-AND-BACK-3000</div>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <!-- SECRET LAYER / EASTER EGG: "WE EAT US" (COZY ROOM & CHILL) -->
+      <!-- ============================================== -->
+      <div class="secret-trigger-wrapper">
+        <button class="btn-secret-unlock" id="secretUnlockBtn">
+          <span class="secret-pulse-icon">✨</span>
+          <span data-i18n="secretBtnText">Mở khóa điều bí mật: "WE EAT US" 🌙🔓</span>
+        </button>
+      </div>
+
+      <!-- Hidden Secret Section (Simple, Warm & Cozy) -->
+      <div class="secret-layer-card" id="secretLayer">
+        <div class="secret-header">
+          <div class="secret-neon-tag">SPECIAL IN-ROOM DATE • CHILL & US 🕯️</div>
+          <h3 class="secret-headline" data-i18n="secretHeadline">WE EAT US 🌙✨</h3>
+          <p class="secret-sub" data-i18n="secretSub">
+            Không gian riêng của hai đứa: Netflix, vài lon bia mát lạnh, đồ ăn ngon và chúng mình.
+          </p>
+        </div>
+
+        <!-- Cozy In-Room Vibe Options -->
+        <div class="beer-section">
+          <div class="beer-grid">
+            <!-- Option 1: Netflix & Chill -->
+            <div class="beer-card" data-beer="netflix" role="button" tabindex="0">
+              <div class="beer-icon">🎬</div>
+              <div class="beer-info">
+                <h5 data-i18n="beer1Title">Netflix & Cozy Bed</h5>
+                <p data-i18n="beer1Desc">Bật bộ phim yêu thích, cuộn tròn trong chăn ấm cùng nhau.</p>
+              </div>
+              <div class="beer-check">✓</div>
+            </div>
+
+            <!-- Option 2: Cold Beer & Talks -->
+            <div class="beer-card" data-beer="beer" role="button" tabindex="0">
+              <div class="beer-icon">🍺</div>
+              <div class="beer-info">
+                <h5 data-i18n="beer2Title">Vài lon bia mát lạnh</h5>
+                <p data-i18n="beer2Desc">Nhâm nhi lon bia, ăn snack và tâm sự thâu đêm.</p>
+              </div>
+              <div class="beer-check">✓</div>
+            </div>
+
+            <!-- Option 3: ...and then "We eat us" -->
+            <div class="beer-card" data-beer="we_eat_us" role="button" tabindex="0">
+              <div class="beer-icon">🕯️</div>
+              <div class="beer-info">
+                <h5 data-i18n="beer3Title">...và rồi "We eat us"</h5>
+                <p data-i18n="beer3Desc">Không gian riêng tư, ngọt ngào chỉ thuộc về hai đứa mình.</p>
+              </div>
+              <div class="beer-check">✓</div>
+            </div>
+          </div>
+
+          <!-- Toast Message on Vibe Choice -->
+          <div class="cheers-toast" id="cheersToast">
+            <span class="clink-anim">✨</span>
+            <span id="cheersMessage">Chỉ cần ở cạnh em trong phòng là đủ bình yên và tuyệt nhất rồi! 💕</span>
+          </div>
         </div>
       </div>
 
@@ -275,7 +338,7 @@
       </div>
 
       <p class="love-footer" data-i18n="loveFooter">
-        Ngoan, uống thuốc rồi ngủ sớm cho mau khỏe nha công chúa của anh! Yêu em nhiều lắmmm 💕
+        Mọi chuyện không vui hay mệt mỏi hôm nay cứ để gió cuốn đi hết nha. Có anh ở đây rồi, lúc nào cũng thương và bên cạnh em! 💕
       </p>
     </section>
 

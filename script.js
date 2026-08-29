@@ -249,16 +249,20 @@ class SoundSynth {
   init() {
     if (!this.ctx) {
       const AudioContext = window.AudioContext || window.webkitAudioContext;
-      this.ctx = new AudioContext();
+      if (!AudioContext) return false;
+      try {
+        this.ctx = new AudioContext();
+      } catch {
+        return false;
+      }
     }
-    if (this.ctx.state === 'suspended') {
-      this.ctx.resume();
-    }
+    if (this.ctx.state === 'suspended') this.ctx.resume();
+    return true;
   }
 
   playPop() {
     if (!soundEnabled) return;
-    this.init();
+    if (!this.init()) return;
     const osc = this.ctx.createOscillator();
     const gain = this.ctx.createGain();
     
@@ -279,7 +283,7 @@ class SoundSynth {
 
   playChime() {
     if (!soundEnabled) return;
-    this.init();
+    if (!this.init()) return;
     const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
     notes.forEach((freq, idx) => {
       const osc = this.ctx.createOscillator();
@@ -302,7 +306,7 @@ class SoundSynth {
 
   playFanfare() {
     if (!soundEnabled) return;
-    this.init();
+    if (!this.init()) return;
     const melody = [
       { freq: 523.25, duration: 0.12 }, // C5
       { freq: 659.25, duration: 0.12 }, // E5
@@ -333,7 +337,7 @@ class SoundSynth {
 
   playWhoosh() {
     if (!soundEnabled) return;
-    this.init();
+    if (!this.init()) return;
     const osc = this.ctx.createOscillator();
     const gain = this.ctx.createGain();
     const now = this.ctx.currentTime;
@@ -354,7 +358,7 @@ class SoundSynth {
 
   playCheers() {
     if (!soundEnabled) return;
-    this.init();
+    if (!this.init()) return;
     const now = this.ctx.currentTime;
     // Two high resonant crystal tones to mimic clinking glasses
     [2093.0, 2793.8].forEach((freq, i) => {
@@ -381,6 +385,7 @@ const sounds = new SoundSynth();
 // DOM INITIALIZATION
 // ==========================================================================
 document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('pointerdown', () => sounds.init(), { once: true });
   initFloatingBackground();
   initLanguageToggle();
   initSoundToggle();
@@ -562,7 +567,8 @@ function initStep2RunawayNo() {
     noBtn.style.position = 'relative';
     noBtn.style.transform = `translate(${randX}px, ${randY}px)`;
 
-    const newScale = Math.min(1 + dodgeCount * 0.14, 1.8);
+    const maxScale = window.matchMedia('(max-width: 480px)').matches ? 1.25 : 1.8;
+    const newScale = Math.min(1 + dodgeCount * 0.14, maxScale);
     yesBtn.style.transform = `scale(${newScale})`;
 
     const msgs = TRANSLATIONS[currentLang].dodgeMessages;
@@ -678,6 +684,7 @@ const secretState = {
 function renderSecretLayer() {
   const secretLayer = document.getElementById('secretLayer');
   const boardingPass = document.querySelector('.boarding-pass');
+  const celebrationHeader = document.querySelector('.celebration-header');
   const triggerWrapper = document.querySelector('.secret-trigger-wrapper');
   const unlockBtn = document.getElementById('secretUnlockBtn');
   const secretBtnTextSpan = document.getElementById('secretBtnTextSpan');
@@ -697,6 +704,10 @@ function renderSecretLayer() {
   if (boardingPass) {
     boardingPass.hidden = secretState.isOpen;
     boardingPass.style.display = secretState.isOpen ? 'none' : '';
+  }
+  if (celebrationHeader) {
+    celebrationHeader.hidden = secretState.isOpen;
+    celebrationHeader.style.display = secretState.isOpen ? 'none' : '';
   }
   if (triggerWrapper) triggerWrapper.style.display = secretState.isOpen ? 'none' : 'block';
   if (unlockBtn) unlockBtn.setAttribute('aria-expanded', String(secretState.isOpen));
